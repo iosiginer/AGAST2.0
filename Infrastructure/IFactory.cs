@@ -2,8 +2,8 @@
 
 namespace Infrastructure
 {
-    public interface IFactory<T>
+    public interface IFactory<ILevel>
     {
-        ILevel<T> NextLevel();
+        ILevel NextLevel();
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace Infrastructure
 {
-    public interface ILevel<T>
+    public interface ILevel
     {
         string AsString();
-        bool CheckIfCorrect(T chosenOption);
+        bool CheckIfCorrect(string chosenOption);
     }
 }

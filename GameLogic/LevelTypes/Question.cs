@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AGAST2.LevelTypes
 {
-    public class Question : ILevel<string>
+    public class Question : ILevel
     {
         private string _phrase;
         private string _subject;
@@ -16,6 +16,7 @@ namespace AGAST2.LevelTypes
         public List<string> Options { get => _options; set => _options = value; }
         public string CorrectOption { get => _correctOption; set => _correctOption = value; }
         public string Subject { get => _subject; set => _subject = value; }
+
 
         public bool CheckIfCorrect(string chosenOption)
         {

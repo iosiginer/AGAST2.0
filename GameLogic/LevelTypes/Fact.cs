@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AGAST2.LevelTypes
 {
-    public class Fact : ILevel<bool>
+    public class Fact : ILevel
     {
         private string _phrase;
         private bool _correctOption;
@@ -18,7 +18,7 @@ namespace AGAST2.LevelTypes
             return Phrase;
         }
 
-        public bool CheckIfCorrect(bool chosenOption)
+        public bool CheckIfCorrect(string chosenOption)
         {
             return chosenOption.Equals(CorrectOption);
         }
