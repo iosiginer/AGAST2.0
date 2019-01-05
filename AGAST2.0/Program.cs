@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AGAST2._0
+namespace AGAST2
 {
     class Program
     {
