@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GameUI
+namespace MusicApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,35 @@ namespace GameUI
         public MainWindow()
         {
             InitializeComponent();
+            Button btn = new Button
+            {
+                Name = "btn1"
+            };
+            btn.Click += Btn1_Click;
+            Button button = new Button
+            {
+                Name = "btn2"
+            };
+            button.Click += Btn2_Click;
+
+
+        }
+
+        private void Btn1_Click(object sender, RoutedEventArgs e)
+        {
+            TwoPlayers twoPlayers = new TwoPlayers();
+            twoPlayers.Show();
+            this.Close();
+
+        }
+
+
+        private void Btn2_Click(object sender, RoutedEventArgs e)
+        {
+            Trivia trivia = new Trivia();
+            trivia.Show();
+            this.Close();
+
         }
     }
 }
