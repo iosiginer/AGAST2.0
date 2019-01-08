@@ -25,19 +25,19 @@ namespace MusicApp
             InitializeComponent();
             Button btn = new Button
             {
-                Name = "btn1"
+                Name = "TwoPlayersButton"
             };
-            btn.Click += Btn1_Click;
+            btn.Click += TwoPlayersButton_Click;
             Button button = new Button
             {
-                Name = "btn2"
+                Name = "Trivia"
             };
-            button.Click += Btn2_Click;
+            button.Click += Trivia_Click;
 
 
         }
 
-        private void Btn1_Click(object sender, RoutedEventArgs e)
+        private void TwoPlayersButton_Click(object sender, RoutedEventArgs e)
         {
             TwoPlayers twoPlayers = new TwoPlayers();
             twoPlayers.Show();
@@ -46,7 +46,7 @@ namespace MusicApp
         }
 
 
-        private void Btn2_Click(object sender, RoutedEventArgs e)
+        private void Trivia_Click(object sender, RoutedEventArgs e)
         {
             Trivia trivia = new Trivia();
             trivia.Show();

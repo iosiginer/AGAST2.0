@@ -10,14 +10,14 @@
 
 
     <Grid x:Name="MainArea">
-        <Grid.Background>
-            <ImageBrush ImageSource="backg.jpg"/>
-        </Grid.Background>
+        <!--<Grid.Background>
+            --><!--<ImageBrush ImageSource="backg.jpg"/>--><!--
+        </Grid.Background>-->
         <Label Content="Lets Play..." Height="72"  VerticalAlignment="Top" Width="256" Margin="26,81,211.333,0"  FontSize="50" HorizontalAlignment="Center"/>
-        <Button x:Name="btn1" Click="Btn1_Click"
+        <Button x:Name="TwoPlayersButton" Click="TwoPlayersButton_Click"
             MinWidth="80" Margin="171,195,172.333,152.667" Content="Two Players" Background="LightBlue" FontFamily="Verdana"  FontSize="20" BorderBrush="DarkBlue" />
-        <Button x:Name="btn2" Click="Btn2_Click" 
-            MinWidth="80" Margin="171,320,172.333,27.667" Content="Trivia" Background="LightBlue" FontFamily="Verdana" FontSize="20" BorderBrush="DarkBlue"/>
+        <Button x:Name="Trivia" Click="Trivia_Click" 
+            MinWidth="80" Margin="165,320,178.2,27.8" Content="Trivia" Background="LightBlue" FontFamily="Verdana" FontSize="20" BorderBrush="DarkBlue"/>
        
     </Grid> 
 </Window>

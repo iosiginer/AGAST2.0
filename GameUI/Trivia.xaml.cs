@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AGAST2.GameLogic.Factories;
 using AGAST2.Infrastructure.LevelTypes;
 
 namespace MusicApp
@@ -20,22 +21,13 @@ namespace MusicApp
     /// </summary>
     public partial class Trivia :Window
     {
-        private Question q = new Question();
-        private List<String> options = new List<string>();
+        private Question q;
+        private List<string> options;
 
         public Trivia()
         {
             InitializeComponent();
-            options.Add("a");
-            options.Add("b");
-            options.Add("c");
-            options.Add("d");
-
-            //options = q.Options;
-            btn1.Content = options[0];
-            btn2.Content = options[1];
-            btn3.Content = options[2];
-            btn4.Content = options[3];
+            q = Factory.GetQuestion();
             
         }
 
@@ -44,7 +36,8 @@ namespace MusicApp
             //Get label.
             var label = sender as Label;
             //Set content.
-            label.Content = q.Phrase;
+            label.Content = q.AsString();
+            options = q.Options;
         }
 
         private void Btn_click_One(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using AGAST2.Infrastructure.LevelTypes;
+﻿using AGAST2.GameLogic.Factories;
+using AGAST2.Infrastructure.LevelTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,12 @@ namespace MusicApp
     /// </summary>
     public partial class TwoPlayers : Window
     {
-        private Fact f = new Fact();
+        private Fact f;
       
         public TwoPlayers()
         {
             InitializeComponent();
+            f = Factory.GetFact();
         }
 
         private void Label_Loaded(object sender, RoutedEventArgs e)
