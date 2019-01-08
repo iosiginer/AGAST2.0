@@ -2,6 +2,7 @@
 using AGAST2.Infrastructure.LevelTypes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace GameUI.ViewModel
         private Factory _factory;
         private Question _currentQuestion;
         private string _questionAsString;
-        private List<string> _options;
+        private ObservableCollection<string> _options;
+        private Boolean _correct;
 
         private Factory Factory { get => _factory; set => _factory = value; }
 
@@ -25,10 +27,15 @@ namespace GameUI.ViewModel
                 if (_currentQuestion != value)
                 {
                     _currentQuestion = value;
-                    Options = _currentQuestion.Options;
+                    Options = new ObservableCollection<string>(_currentQuestion.Options);
                     QuestionAsString = _currentQuestion.AsString();
                 }
             }
+        }
+
+        internal void CheckAnswer(string content)
+        {
+            Correct = CurrentQuestion.CheckIfCorrect(content);
         }
 
         public string QuestionAsString
@@ -44,7 +51,7 @@ namespace GameUI.ViewModel
             } 
         }
 
-        public List<string> Options
+        public ObservableCollection<string> Options
         {
             get => _options;
             set
@@ -57,6 +64,7 @@ namespace GameUI.ViewModel
             } 
         }
 
+        public bool Correct { get => _correct; set => _correct = value; }
 
         public ViewModelTrivia()
         {
@@ -66,10 +74,10 @@ namespace GameUI.ViewModel
 
         private void Run()
         {
-            //while(true)
-            //{
+            do
+            {
                 CurrentQuestion = Factory.GetQuestion();
-            //}
+            } while (Correct);
 
         }
     }

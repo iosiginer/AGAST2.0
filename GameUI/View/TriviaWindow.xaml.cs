@@ -32,7 +32,11 @@ namespace AGAST2.GameUI
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();
+        }
 
+        private void CheckAnswer(object sender, RoutedEventArgs e)
+        {
+            ((ViewModelTrivia)DataContext).CheckAnswer(((Button)sender).Content as string);
         }
 
     }

@@ -30,6 +30,8 @@ namespace AGAST2.GameUI
         private void TwoPlayersButton_Click(object sender, RoutedEventArgs e)
         {
             Window factsWindow = new FactsWindow { DataContext = new ViewModelFacts() };
+            factsWindow.Show();
+            this.Close();
         }
 
 

@@ -6,6 +6,6 @@ namespace AGAST2.Infrastructure
 {
     public interface IDataRetriever
     {
-        
+
     }
 }
