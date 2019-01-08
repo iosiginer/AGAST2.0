@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -51,33 +54,37 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="View\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Trivia.xaml.cs">
+    <Compile Include="Model\DAL\DataManager.cs" />
+    <Compile Include="Model\DAL\DataRetriever.cs" />
+    <Compile Include="Model\Factory.cs" />
+    <Compile Include="Model\GameFlow.cs" />
+    <Compile Include="View\Trivia.xaml.cs">
       <DependentUpon>Trivia.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TwoPlayers.xaml.cs">
+    <Compile Include="View\TwoPlayers.xaml.cs">
       <DependentUpon>TwoPlayers.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Trivia.xaml">
+    <Page Include="View\Trivia.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TwoPlayers.xaml">
+    <Page Include="View\TwoPlayers.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -109,22 +116,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
-      <Project>{E5566C93-DA7B-456B-B3E0-661244CFC2CB}</Project>
-      <Name>GameLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{1748a8db-d5fb-45a9-8d07-0eace0ba0368}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="back.png" />
-    <Resource Include="backg.jpg" />
-    <Resource Include="correct.png" />
+    <Resource Include="View\back.png" />
+    <Resource Include="View\backg.jpg" />
+    <Resource Include="View\correct.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="wrong.jpg" />
+    <Resource Include="View\wrong.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

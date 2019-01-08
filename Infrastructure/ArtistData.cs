@@ -24,4 +24,9 @@ namespace AGAST2.Infrastructure
             Track = track;
         }
     }
+
+    public class QuestionData
+    {
+
+    }
 }
