@@ -1,1 +1,2 @@
 theme: jekyll-theme-merlot
+sqlConnection="Server=localhost;Database=agast;Uid=root;Pwd=123123;"
