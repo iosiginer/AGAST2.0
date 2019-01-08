@@ -26,17 +26,11 @@ namespace AGAST2.GameUI.Model.DAL
             
         }
 
-        public string GetFact(string query)
-        {
-            connection.Open();
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.ex
+        //public string GetFact(string query)
+        //{
+        //    connection.Open();
+        //    MySqlCommand command = new MySqlCommand(query, connection);
 
-        }
-
-        public string getQuestion(string query)
-        {
-
-        }
+        //}
     }
 }

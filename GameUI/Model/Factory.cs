@@ -17,7 +17,7 @@ namespace AGAST2.GameUI.Model
 
         public Question GetQuestion()
         {
-            //TODO implement/
+            //TODO implement
             return new Question();
         }
 
