@@ -3,6 +3,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using Newtonsoft.Json.Linq;
 
 namespace AGAST2.GameUI.DAL
 {
@@ -28,33 +29,52 @@ namespace AGAST2.GameUI.DAL
 
         }
 
-        private void InitializeQuestions()
+        private JArray InitializeQuestions()
         {
-            //connection.Open();
+            connection.Open();
+            JArray arr = new JArray();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM  questions");
+            command.CommandType = CommandType.Text;
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                JObject question = new JObject();
+                {
+                    for (int i = 0; i < reader.FieldCount ;i++)
+                    {
+                        question[i] = reader[i].ToString();
+                    }
+                    arr.Add(question);
+                }
+            }
+            reader.Close();
+            connection.Close();
+            return arr;
 
-            //MySqlCommand command = new MySqlCommand();
-            //command.CommandType = CommandType.Text;
-            //MySqlDataReader reader = command.ExecuteReader();
-            //while (reader.Read())
-            //{
-
-            //}
         }
 
-        public string GetDataByQuery(string query)
+        public JArray GetQuestionByQuery(string query)
         {
-            //int i = 0;
-            String result = "";
+            JArray arr = new JArray();
             connection.Open();
             MySqlCommand command = new MySqlCommand(query, connection);
             command.CommandType = CommandType.Text;
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                result = reader.ToString();
+                JObject row = new JObject();
+                for (int i = 0; i < reader.FieldCount; i++) 
+                {
+                    string columName = reader.GetName(i);
+                    row[columName] = reader.GetString(i); 
+                }
+                arr.Add(row);
+
             }
             connection.Close();
-            return result;         
+            return arr;         
         }
+
+        public JArray GetFactByQuery(string query)
     }
 }
