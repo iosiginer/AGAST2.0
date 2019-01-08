@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameUI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,36 +25,19 @@ namespace AGAST2.GameUI
         public MainWindow()
         {
             InitializeComponent();
-            Button btn = new Button
-            {
-                Name = "TwoPlayersButton"
-            };
-            btn.Click += TwoPlayersButton_Click;
-            Button button = new Button
-            {
-                Name = "Trivia"
-            };
-            button.Click += Trivia_Click;
-
-
         }
 
         private void TwoPlayersButton_Click(object sender, RoutedEventArgs e)
         {
-
-            TwoPlayers twoPlayers = new TwoPlayers(0, 0);
-            twoPlayers.Show();
-            this.Close();
-
+            Window factsWindow = new FactsWindow { DataContext = new ViewModelFacts() };
         }
 
 
         private void Trivia_Click(object sender, RoutedEventArgs e)
         {
-            Trivia trivia = new Trivia(0, 0);
-            trivia.Show();
+            Window triviaWindow = new TriviaWindow { DataContext = new ViewModelTrivia() };
+            triviaWindow.Show();
             this.Close();
-
         }
     }
 }

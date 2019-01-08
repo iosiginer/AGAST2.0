@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections.Generic;
 
-namespace AGAST2.GameLogic.DAL
+namespace AGAST2.GameUI.Model.DAL
 {
     class DataManager
     {

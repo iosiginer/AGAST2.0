@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace AGAST2.GameLogic.DAL
+namespace AGAST2.GameUI.Model.DAL
 {
     public class DataRetriever : IDataRetriever
     {
