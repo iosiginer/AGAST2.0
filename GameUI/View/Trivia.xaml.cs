@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AGAST2.GameLogic.Factories;
+using AGAST2.GameUI.Factories;
 using AGAST2.Infrastructure.LevelTypes;
 
 namespace AGAST2.GameUI

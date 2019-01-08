@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections.Generic;
 
-namespace AGAST2.GameLogic.DAL
+namespace AGAST2.GameUI.DAL
 {
-    class DataManager
+    class QueryManager
     {
 
-        private Dictionary<int, string> PhraseToQuery;
-        private Dictionary<int, string> PhraseToFalseQuery;
+        private Dictionary<int, string> phraseToQuery;
+        private Dictionary<int, string> phraseToFalseQuery;
+        private Dictionary<int, string> factToQuery;
 
-        public DataManager()
+        public QueryManager()
         {
             InitializeMap();
         }
@@ -23,12 +22,12 @@ namespace AGAST2.GameLogic.DAL
 
         private string GetQuestionQuery(int phrase)
         {
-            return this.PhraseToQuery[phrase];
+            return this.phraseToQuery[phrase];
         }
 
         private string GetQuestionFalseAnswers(int phrase)
         {
-            return this.PhraseToFalseQuery[phrase];
+            return this.phraseToFalseQuery[phrase];
         }
     }
 }
