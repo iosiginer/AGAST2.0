@@ -23,48 +23,20 @@ namespace AGAST2.GameLogic.DAL
         {
             connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
             connection = new MySqlConnection(connectionString);
-            connection.Open();
             
         }
 
-        public string GetFact()
+        public string GetFact(string query)
         {
-            connection.
+            connection.Open();
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.ex
+
         }
 
-        public ArtistData GetArtistDataFromName(string artist)
+        public string getQuestion(string query)
         {
-            throw new NotImplementedException();
-        }
 
-        public ArtistData GetArtistDataFromTrack(string track)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetArtistOptionsByNotName(string artistName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetRandomAlbum()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetRandomArtist()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetRandomTrack()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetTrackOptionsByNotArtist(string artistName)
-        {
-            throw new NotImplementedException();
         }
     }
 }
