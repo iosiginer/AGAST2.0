@@ -58,19 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\DAL\DataManager.cs" />
+    <Compile Include="Model\DAL\DataRetriever.cs" />
+    <Compile Include="Model\Factory.cs" />
+    <Compile Include="Model\GameFlow.cs" />
     <Compile Include="Trivia.xaml.cs">
       <DependentUpon>Trivia.xaml</DependentUpon>
     </Compile>
     <Compile Include="TwoPlayers.xaml.cs">
       <DependentUpon>TwoPlayers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Wrong.xaml.cs">
-      <DependentUpon>Wrong.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Correct.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,9 +75,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Correct.xaml.cs">
-      <DependentUpon>Correct.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -91,10 +85,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TwoPlayers.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Wrong.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -126,10 +116,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
-      <Project>{e5566c93-da7b-456b-b3e0-661244cfc2cb}</Project>
-      <Name>GameLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{1748a8db-d5fb-45a9-8d07-0eace0ba0368}</Project>
       <Name>Infrastructure</Name>
@@ -144,7 +130,6 @@
     <Resource Include="wrong.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
     <Folder Include="View\" />
   </ItemGroup>

@@ -21,7 +21,7 @@ namespace AGAST2.GameUI
     /// </summary>
     public partial class Trivia : Window
     {
-        private QuestionFactory factory = new QuestionFactory();
+        private Factory factory = new Factory();
         private List<String> options;
         private int score1;
 
@@ -38,7 +38,7 @@ namespace AGAST2.GameUI
 
         public Question Run()
         {
-            Question question = factory.NextLevel();
+            Question question = factory.GetQuestion();
             options = question.Options;
 
             btn1.Content = options[0];
