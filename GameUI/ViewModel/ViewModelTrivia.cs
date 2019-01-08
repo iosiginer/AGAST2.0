@@ -96,11 +96,11 @@ namespace GameUI.ViewModel
 
         private void Run()
         {
-            do
-            {
+            //do
+            //{
                 CurrentQuestion = Factory.GetQuestion();
-            } while (Lives > 0);
-            CloseAction();
+            //} while (Lives > 0);
+            //CloseAction();
         }
     }
 }

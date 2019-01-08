@@ -25,6 +25,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Label Content="Lives:" HorizontalAlignment="Left" Margin="353,17,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
