@@ -2,14 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using MySql.Data;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace AGAST2.GameLogic.DAL
 {
     public class DataRetriever : IDataRetriever
     {
-        private MySqlConnection connection;
+        private SqlConnection connection;
         private string connectionString;
         private Random randy;
 
@@ -21,15 +20,10 @@ namespace AGAST2.GameLogic.DAL
 
         private void Initialize()
         {
-            connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
-            connection = new MySqlConnection(connectionString);
-            connection.Open();
+            //connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
+            //connection = new MySqlConnection(connectionString);
+            //connection.Open();
             
-        }
-
-        public string GetFact()
-        {
-            connection.
         }
 
         public ArtistData GetArtistDataFromName(string artist)
