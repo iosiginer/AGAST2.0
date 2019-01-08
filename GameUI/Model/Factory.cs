@@ -7,15 +7,15 @@ using System.Text;
 
 namespace AGAST2.GameLogic.Factories
 {
-    public static class Factory
+    public class Factory
     {
-        public static Fact GetFact()
+        public Fact GetFact()
         {
             //TODO implement. 
             return new Fact();
         }
 
-        public static Question GetQuestion()
+        public Question GetQuestion()
         {
             //TODO implement/
             return new Question();
