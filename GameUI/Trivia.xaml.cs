@@ -11,73 +11,115 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AGAST2.GameLogic.Factories;
 using AGAST2.Infrastructure.LevelTypes;
 
-namespace MusicApp
+namespace AGAST2.GameUI
 {
     /// <summary>
     /// Interaction logic for Trivia.xaml
     /// </summary>
-    public partial class Trivia :Window
+    public partial class Trivia : Window
     {
-        private Question q = new Question();
-        private List<String> options = new List<string>();
+        private QuestionFactory factory = new QuestionFactory();
+        private List<String> options;
+        private int score1;
 
-        public Trivia()
+        public Trivia(int score1, int none)
         {
-            InitializeComponent();
-            options.Add("a");
-            options.Add("b");
-            options.Add("c");
-            options.Add("d");
 
-            //options = q.Options;
+            InitializeComponent();
+            this.score1 = score1;
+            none = 0;
+            this.Run();
+
+
+        }
+
+        public Question Run()
+        {
+            Question question = factory.NextLevel();
+            options = question.Options;
+
             btn1.Content = options[0];
             btn2.Content = options[1];
             btn3.Content = options[2];
             btn4.Content = options[3];
-            
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+
+                Title.Content = question.AsString();
+
+            }));
+
+            return question;
         }
 
-        private void Label_Loaded(object sender, RoutedEventArgs e)
+       
+
+        private void Label_Score(object sender, RoutedEventArgs e)
         {
             //Get label.
             var label = sender as Label;
             //Set content.
-            label.Content = q.Phrase;
+            label.Content = "Score:   " + this.score1;
         }
 
+       
         private void Btn_click_One(object sender, RoutedEventArgs e)
         {
-           if(btn1.Content.Equals("a"))
+            if (btn1.Content.Equals("a"))
             {
-                Correct c = new Correct("q");
-                c.Show();
-                this.Close();
+                this.score1 = this.score1 + 1;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    score.Content = "Score:   " + this.score1;
+                }));
+                btn1.Background = Brushes.Green;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Correct Answer!";
+                }));
+                //Next_Question(btn1);
 
             }
             else
             {
-                Wrong w = new Wrong("q");
-                w.Show();
-                this.Close();
+                
+                btn1.Background = Brushes.Red;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Wrong Answer!";
+                }));
+                //Next_Question(btn1);
             }
 
         }
 
         private void Btn_click_Two(object sender, RoutedEventArgs e)
         {
-            if (btn2.Content.Equals(q.CorrectOption))
+            if (this.Run().CheckIfCorrect(btn2.Content.ToString()))
             {
-                Correct c = new Correct("q");
-                c.Show();
-                this.Close();
+                this.score1 = this.score1 + 1;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    score.Content = "Score:   " + this.score1;
+                }));
+                btn1.Background = Brushes.Green;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Correct Answer!";
+                }));
+               // Next_Question(btn1);
             }
             else
             {
-                Wrong w = new Wrong("q");
-                w.Show();
-                this.Close();
+                btn1.Background = Brushes.Red;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Wrong Answer!";
+                }));
+                //Next_Question(btn1);
             }
 
         }
@@ -86,15 +128,26 @@ namespace MusicApp
         {
             if (btn3.Content.Equals(q.CorrectOption))
             {
-                Correct c = new Correct("q");
-                c.Show();
-                this.Close();
+                this.score1 = this.score1 + 1;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    score.Content = "Score:   " + this.score1;
+                }));
+                btn1.Background = Brushes.Green;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Correct Answer!";
+                }));
+               // Next_Question(btn1);
             }
             else
             {
-                Wrong w = new Wrong("q");
-                w.Show();
-                this.Close();
+                btn1.Background = Brushes.Red;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Wrong Answer!";
+                }));
+                Next_Question(btn1);
             }
 
         }
@@ -103,15 +156,26 @@ namespace MusicApp
         {
             if (btn4.Content.Equals(q.CorrectOption))
             {
-                Correct c = new Correct("q");
-                c.Show();
-                this.Close();
+                this.score1 = this.score1 + 1;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    score.Content = "Score:   " + this.score1;
+                }));
+                btn1.Background = Brushes.Green;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Correct Answer!";
+                }));
+               // Next_Question(btn1);
             }
             else
             {
-                Wrong w = new Wrong("q");
-                w.Show();
-                this.Close();
+                btn1.Background = Brushes.Red;
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    Title.Content = "Wrong Answer!";
+                }));
+                //Next_Question(btn1);
             }
 
         }
