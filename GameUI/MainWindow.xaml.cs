@@ -13,13 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MusicApp
+namespace AGAST2.GameUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +40,8 @@ namespace MusicApp
 
         private void TwoPlayersButton_Click(object sender, RoutedEventArgs e)
         {
-            TwoPlayers twoPlayers = new TwoPlayers();
+
+            TwoPlayers twoPlayers = new TwoPlayers(0, 0);
             twoPlayers.Show();
             this.Close();
 
@@ -48,7 +50,7 @@ namespace MusicApp
 
         private void Trivia_Click(object sender, RoutedEventArgs e)
         {
-            Trivia trivia = new Trivia();
+            Trivia trivia = new Trivia(0, 0);
             trivia.Show();
             this.Close();
 
