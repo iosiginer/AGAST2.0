@@ -75,11 +75,14 @@
     <Compile Include="Model\DAL\QueryManager.cs" />
     <Compile Include="Model\DAL\DataRetriever.cs" />
     <Compile Include="Model\Factory.cs" />
-    <Compile Include="View\Trivia.xaml.cs">
-      <DependentUpon>Trivia.xaml</DependentUpon>
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelFacts.cs" />
+    <Compile Include="ViewModel\ViewModelTrivia.cs" />
+    <Compile Include="View\TriviaWindow.xaml.cs">
+      <DependentUpon>TriviaWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TwoPlayers.xaml.cs">
-      <DependentUpon>TwoPlayers.xaml</DependentUpon>
+    <Compile Include="View\FactsWindow.xaml.cs">
+      <DependentUpon>FactsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -93,11 +96,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Trivia.xaml">
+    <Page Include="View\TriviaWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\TwoPlayers.xaml">
+    <Page Include="View\FactsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -145,8 +148,6 @@
   <ItemGroup>
     <Resource Include="View\wrong.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

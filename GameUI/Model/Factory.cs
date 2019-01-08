@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AGAST2.GameUI.Factories
+namespace AGAST2.GameUI.Model
 {
     public class Factory
     {

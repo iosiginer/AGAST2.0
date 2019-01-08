@@ -18,17 +18,15 @@ namespace AGAST2.GameUI
     /// <summary>
     /// Interaction logic for TwoPlayers.xaml
     /// </summary>
-    public partial class TwoPlayers : Window
+    public partial class FactsWindow : Window
     {
         private Fact f = new Fact();
         private int score_p1;
         private int score_p2;
 
-        public TwoPlayers(int score_p1, int score_p2)
+        public FactsWindow()
         {
             InitializeComponent();
-            this.score_p1 = score_p1;
-            this.score_p2 = score_p2;
         }
 
         private void Label_Loaded(object sender, RoutedEventArgs e)
