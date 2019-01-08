@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace AGAST2.GameUI.Model.DAL
 {
     public class DataRetriever : IDataRetriever
     {
-        private SqlConnection connection;
+        private MySqlConnection connection;
         private string connectionString;
         private Random randy;
 
@@ -20,45 +21,22 @@ namespace AGAST2.GameUI.Model.DAL
 
         private void Initialize()
         {
-            //connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
-            //connection = new MySqlConnection(connectionString);
-            //connection.Open();
+            connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
+            connection = new MySqlConnection(connectionString);
             
         }
 
-        public ArtistData GetArtistDataFromName(string artist)
+        public string GetFact(string query)
         {
-            throw new NotImplementedException();
+            connection.Open();
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.ex
+
         }
 
-        public ArtistData GetArtistDataFromTrack(string track)
+        public string getQuestion(string query)
         {
-            throw new NotImplementedException();
-        }
 
-        public List<string> GetArtistOptionsByNotName(string artistName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetRandomAlbum()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetRandomArtist()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetRandomTrack()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetTrackOptionsByNotArtist(string artistName)
-        {
-            throw new NotImplementedException();
         }
     }
 }
