@@ -1,9 +1,8 @@
-﻿using Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AGAST2.LevelTypes
+namespace AGAST2.Infrastructure.LevelTypes
 {
     public class Question : ILevel
     {

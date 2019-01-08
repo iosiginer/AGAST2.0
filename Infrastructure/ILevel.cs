@@ -1,4 +1,4 @@
-﻿namespace Infrastructure
+﻿namespace AGAST2.Infrastructure
 {
     public interface ILevel
     {

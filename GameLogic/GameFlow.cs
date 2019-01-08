@@ -1,7 +1,7 @@
-﻿using Infrastructure;
+﻿using AGAST2.Infrastructure;
 using System;
 
-namespace AGAST2
+namespace AGAST2.GameLogic
 {
     public class GameFlow
     {

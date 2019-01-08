@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure
+namespace AGAST2.Infrastructure
 {
     public interface IDataRetriever
     {

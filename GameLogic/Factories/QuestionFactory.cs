@@ -1,10 +1,10 @@
-﻿using AGAST2.LevelTypes;
-using Infrastructure;
+﻿using AGAST2.Infrastructure;
+using AGAST2.Infrastructure.LevelTypes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AGAST2.Factories
+namespace AGAST2.GameLogic.Factories
 {
     public class QuestionFactory : IFactory<Question>
     {

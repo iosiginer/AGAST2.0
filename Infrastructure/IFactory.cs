@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure
+namespace AGAST2.Infrastructure
 {
     public interface IFactory<ILevel>
     {
