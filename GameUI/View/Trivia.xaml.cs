@@ -21,7 +21,7 @@ namespace AGAST2.GameUI
     /// </summary>
     public partial class Trivia : Window
     {
-        private QuestionFactory factory = new QuestionFactory();
+        private Factory factory = new Factory();
         private List<String> options;
         private int score1;
 
@@ -38,7 +38,7 @@ namespace AGAST2.GameUI
 
         public Question Run()
         {
-            Question question = factory.NextLevel();
+            Question question = factory.GetQuestion();
             options = question.Options;
 
             btn1.Content = options[0];
@@ -68,7 +68,7 @@ namespace AGAST2.GameUI
        
         private void Btn_click_One(object sender, RoutedEventArgs e)
         {
-            if (btn1.Content.Equals("a"))
+            if (this.Run().CheckIfCorrect(btn1.Content.ToString()))
             {
                 this.score1 = this.score1 + 1;
                 Dispatcher.BeginInvoke(new Action(() =>
@@ -126,7 +126,7 @@ namespace AGAST2.GameUI
 
         private void Btn_click_Three(object sender, RoutedEventArgs e)
         {
-            if (btn3.Content.Equals(q.CorrectOption))
+            if (this.Run().CheckIfCorrect(btn3.Content.ToString()))
             {
                 this.score1 = this.score1 + 1;
                 Dispatcher.BeginInvoke(new Action(() =>
@@ -147,14 +147,14 @@ namespace AGAST2.GameUI
                 {
                     Title.Content = "Wrong Answer!";
                 }));
-                Next_Question(btn1);
+               // Next_Question(btn1);
             }
 
         }
 
         private void Btn_click_Four(object sender, RoutedEventArgs e)
         {
-            if (btn4.Content.Equals(q.CorrectOption))
+            if (this.Run().CheckIfCorrect(btn4.Content.ToString()))
             {
                 this.score1 = this.score1 + 1;
                 Dispatcher.BeginInvoke(new Action(() =>
