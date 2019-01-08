@@ -1,0 +1,23 @@
+﻿<Window x:Class="MusicApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicApp"
+        mc:Ignorable="d"
+        Left="10" Top="20"
+        Title="MusicApp" Height="450" Width="500">
+
+
+    <Grid x:Name="MainArea">
+        <!--<Grid.Background>
+            --><!--<ImageBrush ImageSource="backg.jpg"/>--><!--
+        </Grid.Background>-->
+        <Label Content="Lets Play..." Height="72"  VerticalAlignment="Top" Width="256" Margin="26,81,211.333,0"  FontSize="50" HorizontalAlignment="Center"/>
+        <Button x:Name="TwoPlayersButton" Click="TwoPlayersButton_Click"
+            MinWidth="80" Margin="171,195,172.333,152.667" Content="Two Players" Background="LightBlue" FontFamily="Verdana"  FontSize="20" BorderBrush="DarkBlue" />
+        <Button x:Name="Trivia" Click="Trivia_Click" 
+            MinWidth="80" Margin="165,320,178.2,27.8" Content="Trivia" Background="LightBlue" FontFamily="Verdana" FontSize="20" BorderBrush="DarkBlue"/>
+       
+    </Grid> 
+</Window>
