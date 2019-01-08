@@ -1,10 +1,11 @@
 ﻿using AGAST2.Infrastructure;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using System;
-using System.Data;
 
-namespace AGAST2.GameUI.DAL
+namespace AGAST2.GameUI.Model.DAL
 {
     public class DataRetriever : IDataRetriever
     {
@@ -13,48 +14,23 @@ namespace AGAST2.GameUI.DAL
         private Random randy;
 
 
-        public DataRetriever()
+        private DataRetriever()
         {
             this.Initialize();
-            this.InitializeQuestions();
-            //Initialize
         }
 
         private void Initialize()
         {
-            //connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
-            connectionString = "Server=localhost;Database=agast;UserID=root;Password=123123";
+            connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
             connection = new MySqlConnection(connectionString);
-
+            
         }
 
-        private void InitializeQuestions()
-        {
-            //connection.Open();
+        //public string GetFact(string query)
+        //{
+        //    connection.Open();
+        //    MySqlCommand command = new MySqlCommand(query, connection);
 
-            //MySqlCommand command = new MySqlCommand();
-            //command.CommandType = CommandType.Text;
-            //MySqlDataReader reader = command.ExecuteReader();
-            //while (reader.Read())
-            //{
-
-            //}
-        }
-
-        public string GetDataByQuery(string query)
-        {
-            //int i = 0;
-            String result = "";
-            connection.Open();
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                result = reader.ToString();
-            }
-            connection.Close();
-            return result;         
-        }
+        //}
     }
 }
