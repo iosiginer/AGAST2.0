@@ -17,7 +17,7 @@
         <Label x:Name="Question" Height="72"  VerticalAlignment="Top"  Margin="10,76,10.333,0"  FontSize="12" HorizontalAlignment="Center" Content="{Binding QuestionAsString}"  Grid.ColumnSpan="2" />
         <Button  Click="Back"
             MinWidth="80" Margin="0,384,372.667,-0.333" Content="Back" Background="LightBlue" FontFamily="Verdana"  FontSize="12" BorderBrush="DarkBlue" />
-        <Label x:Name="score" Height="39"  VerticalAlignment="Top"  Margin="363,17,10.667,0"  FontSize="20" HorizontalAlignment="Center" Content="Label" />
+        <Label x:Name="Lives" Content="{Binding Lives}" Height="39"  VerticalAlignment="Top"  Margin="363,17,10.667,0"  FontSize="20" HorizontalAlignment="Center"/>
         <ItemsControl x:Name="Options" ItemsSource="{Binding Options}" HorizontalAlignment="Left" Margin="98,178,0,0" VerticalAlignment="Top" Width="290">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
