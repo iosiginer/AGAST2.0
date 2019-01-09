@@ -83,12 +83,26 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelFacts.cs" />
     <Compile Include="ViewModel\ViewModelTrivia.cs" />
+    <Compile Include="View\GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HowToPlayer.xaml.cs">
+      <DependentUpon>HowToPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TriviaWindow.xaml.cs">
       <DependentUpon>TriviaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FactsWindow.xaml.cs">
       <DependentUpon>FactsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GameOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\HowToPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TriviaWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,14 +166,70 @@
   <ItemGroup>
     <Resource Include="View\back.png" />
     <Resource Include="View\backg.jpg" />
-    <Resource Include="View\correct.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\DAL\QueryResources\FactQueries\link_artist_artist.sql" />
+    <Content Include="Model\DAL\QueryResources\FactQueries\link_artist_release.sql" />
+    <Content Include="Model\DAL\QueryResources\FactQueries\link_release_release.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q1.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q10.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q10_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q11.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q11_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q12.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q12_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q13.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q13_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q1_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q2.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q2_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q3.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q3_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q4.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q4_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q5.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q5_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q6.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q6_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q7.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q7_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q8.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q9.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q9_false.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\wrong.jpg" />
+    <Resource Include="View\trivia.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\QueryResources\FactQueries\" />
-    <Folder Include="Model\QueryResources\QuestionQuerries\" />
+    <Resource Include="View\keyA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\gameover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\heart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\heart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

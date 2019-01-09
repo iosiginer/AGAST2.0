@@ -1,4 +1,5 @@
 ﻿using AGAST2.Infrastructure.LevelTypes;
+using GameUI.View;
 using GameUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -36,12 +37,25 @@ namespace AGAST2.GameUI
             this.Close();
         }
 
+        private void Instructions(object sender, RoutedEventArgs e)
+        {
+            HowToPlay instructionsWindow = new HowToPlay();
+            instructionsWindow.Show();
+            this.Close();
+        }
+
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             var dataContext = (ViewModelFacts)this.DataContext;
             dataContext.KeyModifer = e.SystemKey.ToString();
-            dataContext.OnKeyDown(e.Key.ToString());
-     
+            bool success = dataContext.OnKeyDown(e.Key.ToString());
+            if (!success)
+            {
+                GameOver gameover = new GameOver();
+                gameover.Show();
+                this.Close();
+            }
+
         }
 
 
