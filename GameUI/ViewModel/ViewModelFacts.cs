@@ -20,7 +20,7 @@ namespace GameUI.ViewModel
         List<String> _input;
         private int _player1 = 0, _player2 = 0;
         private int _p1Life = 3, _p2Life = 3;
-        private bool _answered;
+        int _answered = 0;
 
         private List<String> Get_List()
         {
@@ -36,7 +36,7 @@ namespace GameUI.ViewModel
         public string KeyModifer {  get; set; }
 
 
-        internal bool OnKeyDown(String key)
+        internal int OnKeyDown(String key)
         {
             _input = Get_List();
             if(_input.Contains(key))
@@ -44,7 +44,7 @@ namespace GameUI.ViewModel
                 _answered = FirstClicker(key);
             }
             else {
-                _answered = true;
+                _answered = 0;
             }
             return _answered;
             
@@ -75,7 +75,7 @@ namespace GameUI.ViewModel
         }
 
 
-        public bool FirstClicker(string key)
+        public int FirstClicker(string key)
         {
             Tuple<string, string> playerAndValue = GetClickerValues(key);
             bool correctAnswer = CurrentFact.CheckIfCorrect(playerAndValue.Item2);
@@ -83,23 +83,31 @@ namespace GameUI.ViewModel
             {
                 if (playerAndValue.Item1.Equals("player1")) ScoreOne++;
                 else ScoreTwo++;
-                return true;
+                return 0;
                 
             } else {
                 if (playerAndValue.Item1.Equals("player1")) LivesOne--;
                 else LivesTwo--;
-                if (LivesTwo == 0) return false;
-                else if (LivesOne == 0) return false;
+                if (LivesTwo == 0)
+                {
+                    if (ScoreOne > ScoreTwo) return 1;
+                    else return 2;
+                }
+                else if (LivesOne == 0)
+                {
+                    if (ScoreOne > ScoreTwo) return 1;
+                    else return 2;
+                }
                 else
                 {
                     CurrentFact = Factory.GetFact();
-                    return true;
+                    return 0;
                 }
 
             }
 
         }
-
+        
         private Factory Factory { get => _factory; set => _factory = value; }
 
        
@@ -198,7 +206,7 @@ namespace GameUI.ViewModel
             Run();
         }
 
-        public bool Answered { get => _answered; set => _answered = value; }
+        public int Answered { get => _answered; set => _answered = value; }
 
 
         private void Run()

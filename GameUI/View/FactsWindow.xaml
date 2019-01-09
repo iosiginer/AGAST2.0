@@ -38,8 +38,10 @@
         <Label Content="Player 2:" HorizontalAlignment="Left" Margin="23,89,0,0" VerticalAlignment="Top" Height="29" Width="60"/>
         <Label x:Name="ScoreOne" Content="{Binding ScoreOne}"  HorizontalAlignment="Left" Margin="75,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.203,0.173"/>
         <Label x:Name="ScoreTwo" Content="{Binding ScoreTwo}"  HorizontalAlignment="Left" Margin="75,89,0,0" VerticalAlignment="Top"/>
+
         <Label Content="Lives:" HorizontalAlignment="Left" Margin="323,20,0,0" VerticalAlignment="Top" Height="45" Width="80" FontSize="20"/>
         <Button Click="Instructions" Background="Transparent" BorderThickness="0" Grid.ColumnSpan="2"  HorizontalAlignment="Left" Margin="408,10,0,0" VerticalAlignment="Top" Width="85" Height="68"/>
+        <Label x:Name="Correct" Content="{Binding Correct}" HorizontalAlignment="Left" Margin="323,368,-21.667,0" VerticalAlignment="Top" Height="37" Width="192" FontSize="25" Grid.ColumnSpan="2"/>
 
 
 

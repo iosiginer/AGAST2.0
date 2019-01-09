@@ -16,9 +16,9 @@ namespace AGAST2.GameUI.Model
 
         public Factory()
         {
-            dataBase = DataRetriever.Instance;
-            qManager = QueryManager.Instance;
-            this.QuestionsBank = dataBase.GetQuestionDictionary();
+            //dataBase = DataRetriever.Instance;
+            //Manager = QueryManager.Instance;
+            //this.QuestionsBank = dataBase.GetQuestionDictionary();
         }
 
         public Question GetQuestion()

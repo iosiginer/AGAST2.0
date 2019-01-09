@@ -44,7 +44,7 @@ namespace AGAST2.GameUI.DAL
         {
             int queryId;
             string queryString = String.Empty;
-            foreach (string file in Directory.EnumerateFiles(directory, "*.sql"))
+         /*   foreach (string file in Directory.EnumerateFiles(directory, "*.sql"))
             {
                 string[] fileLines = File.ReadAllLines(file);
                 if (fileLines[0].StartsWith("#") && fileLines[0].EndsWith("false"))
@@ -68,7 +68,7 @@ namespace AGAST2.GameUI.DAL
                     factToQuery.Add(queryId, queryString);
                 }
 
-            }
+            }*/
         }
 
         private string TrimFileToQuery(string[] fileLines)

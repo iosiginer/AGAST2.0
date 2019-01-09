@@ -55,7 +55,7 @@ namespace GameUI.ViewModel
             }
             else
             {
-                //Points += TriviaConstants.RightQuestionPoints;k  
+                //Points += TriviaConstants.RightQuestionPoints;
             }
             if (Lives > 0)
             {

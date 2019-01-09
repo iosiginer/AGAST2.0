@@ -87,6 +87,12 @@
     <Compile Include="View\HowToPlayer.xaml.cs">
       <DependentUpon>HowToPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PlayerOneWin.xaml.cs">
+      <DependentUpon>PlayerOneWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlayerTwoWin.xaml.cs">
+      <DependentUpon>PlayerTwoWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TriviaWindow.xaml.cs">
       <DependentUpon>TriviaWindow.xaml</DependentUpon>
     </Compile>
@@ -114,6 +120,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\HowToPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlayerOneWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlayerTwoWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,6 +209,8 @@
     <Content Include="Model\DAL\QueryResources\QuestionQuerries\q8.sql" />
     <Content Include="Model\DAL\QueryResources\QuestionQuerries\q9.sql" />
     <Content Include="Model\DAL\QueryResources\QuestionQuerries\q9_false.sql" />
+    <Resource Include="View\p2.png" />
+    <Resource Include="View\p1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\trivia.png" />

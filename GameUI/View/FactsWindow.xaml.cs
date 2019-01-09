@@ -48,11 +48,17 @@ namespace AGAST2.GameUI
         {
             var dataContext = (ViewModelFacts)this.DataContext;
             dataContext.KeyModifer = e.SystemKey.ToString();
-            bool success = dataContext.OnKeyDown(e.Key.ToString());
-            if (!success)
+            int success = dataContext.OnKeyDown(e.Key.ToString());
+            if (success == 1)
             {
-                GameOver gameover = new GameOver();
-                gameover.Show();
+                PlayerOneWin p1 = new PlayerOneWin();
+                p1.Show();
+                this.Close();
+            }
+            if(success == 2)
+            {
+                PlayerTwoWin p2 = new PlayerTwoWin();
+                p2.Show();
                 this.Close();
             }
 
