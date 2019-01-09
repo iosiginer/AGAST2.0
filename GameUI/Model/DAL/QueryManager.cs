@@ -15,9 +15,12 @@ namespace AGAST2.GameUI.DAL
 
         public QueryManager()
         {
+            phraseToQuery = new Dictionary<int, string>();
+            falseAnswersToQuery = new Dictionary<int, string>();
+            factToQuery = new Dictionary<int, string>();
             //queryDirectory = System.Configuration.ConfigurationManager.AppSettings["queryResources"];
-            queryDirectory = "..\\..\\QueryResources\\QuestionQueries";
-            factDirectory = "..\\..\\QueryResources\\FactQueries";
+            queryDirectory = "C:\\QueryResources\\QuestionQueries";
+            factDirectory = "C:\\QueryResources\\FactQueries";
             InitializeQueriesFromDirectory(queryDirectory);
             InitializeQueriesFromDirectory(factDirectory);
         }
@@ -29,17 +32,18 @@ namespace AGAST2.GameUI.DAL
             foreach (string file in Directory.EnumerateFiles(directory, "*.sql"))
             {
                 string[] fileLines = File.ReadAllLines(file);
-                if (fileLines[0].StartsWith("#") && fileLines[0].EndsWith("False"))
+                if (fileLines[0].StartsWith("#") && fileLines[0].EndsWith("false"))
                 {
                     Int32.TryParse(Regex.Match(fileLines[0], @"\d+").Value, out queryId);
                     queryString = TrimFileToQuery(fileLines);
                     falseAnswersToQuery.Add(queryId, queryString);
 
                 }
-                else if (fileLines[0].StartsWith("#"))
+                else if (fileLines[0].StartsWith("#") && !fileLines[0].EndsWith("fact"))
                 {
                     Int32.TryParse(Regex.Match(fileLines[0], @"\d+").Value, out queryId);
                     queryString = TrimFileToQuery(fileLines);
+                    Console.WriteLine(queryId);
                     phraseToQuery.Add(queryId, queryString);
                 }
                 else
