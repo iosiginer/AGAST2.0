@@ -12,13 +12,10 @@ namespace AGAST2.GameUI.DAL
     {
         private MySqlConnection connection;
         private string connectionString;
-        private Random randy;
-
 
         public DataRetriever()
         {
             this.Initialize();
-            //this.InitializeQuestions();
         }
 
         private void Initialize()
@@ -29,9 +26,11 @@ namespace AGAST2.GameUI.DAL
 
         }
 
-        public Dictionary<int,string> InitializeQuestions()
+        public Dictionary<int,string> GetQuestionDictionary()
         {
             Dictionary<int, string> dict = new Dictionary<int,string>();
+            int questionID = 0;
+            int questionPhrase = 1;
             string commandString = "SELECT * FROM questions";
             MySqlCommand command = new MySqlCommand(commandString);
             command.Connection = connection;
@@ -40,17 +39,17 @@ namespace AGAST2.GameUI.DAL
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                int key = reader.GetInt32(0);
-                dict.Add(key, reader.GetString(1));
+                int key = reader.GetInt32(questionID);
+                dict.Add(key, reader.GetString(questionPhrase));
             }
             reader.Close();
             command.Connection.Close();
             return dict;
         }
 
-        public JArray GetQuestionByQuery(string query)
+        public JArray GetDataFromDB(string query)
         {
-            JArray arr = new JArray();
+            JArray dataArr = new JArray();
             connection.Open();
             MySqlCommand command = new MySqlCommand(query, connection);
             command.CommandType = CommandType.Text;
@@ -63,12 +62,49 @@ namespace AGAST2.GameUI.DAL
                     string columName = reader.GetName(i);
                     row[columName] = reader.GetString(i); 
                 }
-                arr.Add(row);
+                dataArr.Add(row);
 
             }
             reader.Close();
             connection.Close();
-            return arr;         
+            return dataArr;         
+        }
+
+        public string GetRandomArtist()
+        {
+            int nameColum = 0;
+            string artistName = String.Empty;
+            connection.Open();
+            string query = "SELECT name FROM artist_facts ORDER BY RAND() limit 1";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.CommandType = CommandType.Text;
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                artistName = reader.GetString(nameColum);
+            }
+            reader.Close();
+            connection.Close();
+            return artistName;
+
+        }
+
+        public string GetRandomRelease()
+        {
+            int nameColum = 0;
+            string releaseName = "";
+            connection.Open();
+            string query = "SELECT name FROM release_facts ORDER BY RAND() limit 1";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.CommandType = CommandType.Text;
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                releaseName = reader.GetString(nameColum);
+            }
+            reader.Close();
+            connection.Close();
+            return releaseName;
         }
 
     }
