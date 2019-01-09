@@ -16,8 +16,9 @@ namespace GameUI.ViewModel
         private Question _currentQuestion;
         private string _questionAsString;
         private ObservableCollection<string> _options;
-        private Boolean _correct;
         private int _lives;
+        private int _points;
+        private bool _answered;
 
         public Action CloseAction { get; set; }
 
@@ -25,7 +26,7 @@ namespace GameUI.ViewModel
         {
             Factory = new Factory();
             Lives = TriviaConstants.InitialLives;
-            Run();
+            PlayRound();
         }
 
         private Factory Factory { get => _factory; set => _factory = value; }
@@ -44,13 +45,32 @@ namespace GameUI.ViewModel
             }
         }
 
-        internal void CheckAnswer(string content)
+        public bool SubmitAnswer(string content)
         {
             bool correctAnswer = CurrentQuestion.CheckIfCorrect(content);
             if (!correctAnswer)
             {
                 Lives--;
+                Points--;
             }
+            else
+            {
+                Points += TriviaConstants.RightQuestionPoints;
+            }
+            if (Lives > 0)
+            {
+                CurrentQuestion = Factory.GetQuestion();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void EndGame()
+        {
+            throw new NotImplementedException();
         }
 
         public string QuestionAsString
@@ -79,11 +99,10 @@ namespace GameUI.ViewModel
             } 
         }
 
-        public bool Correct { get => _correct; set => _correct = value; }
         public int Lives
         {
             get => _lives;
-            set
+            set 
             {
                 if (_lives != value)
                 {
@@ -93,14 +112,24 @@ namespace GameUI.ViewModel
             }
         }
 
-
-        private void Run()
+        public int Points
         {
-            //do
-            //{
-                CurrentQuestion = Factory.GetQuestion();
-            //} while (Lives > 0);
-            //CloseAction();
+            get => _points;
+            set
+            {
+                if (_points != value)
+                {
+                    _points = value;
+                    RaisePropertyChanged("Points");
+                }
+            }
+        }
+
+        public bool Answered { get => _answered; set => _answered = value; }
+
+        private void PlayRound()
+        {
+            CurrentQuestion = Factory.GetQuestion();
         }
     }
 }

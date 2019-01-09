@@ -38,9 +38,11 @@ namespace AGAST2.GameUI
             this.Close();
         }
 
-        private void CheckAnswer(object sender, RoutedEventArgs e)
+        private void SubmitAnswer(object sender, RoutedEventArgs e)
         {
-            ((ViewModelTrivia)DataContext).CheckAnswer(((Button)sender).Content as string);
+            bool success = ((ViewModelTrivia)DataContext).SubmitAnswer(((Button)sender).Content as string);
+            if (!success)
+                this.Back(sender, e);
         }
 
     }
