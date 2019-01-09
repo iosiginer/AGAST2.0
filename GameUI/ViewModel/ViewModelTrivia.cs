@@ -86,6 +86,8 @@ namespace GameUI.ViewModel
             } 
         }
 
+
+
         public ObservableCollection<string> Options
         {
             get => _options;

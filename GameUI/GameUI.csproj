@@ -78,6 +78,7 @@
     <Compile Include="Model\DAL\QueryManager.cs" />
     <Compile Include="Model\DAL\DataRetriever.cs" />
     <Compile Include="Model\Factory.cs" />
+    <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelFacts.cs" />
     <Compile Include="ViewModel\ViewModelTrivia.cs" />

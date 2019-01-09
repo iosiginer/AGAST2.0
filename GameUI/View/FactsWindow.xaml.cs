@@ -1,4 +1,5 @@
 ﻿using AGAST2.Infrastructure.LevelTypes;
+using GameUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,11 @@ namespace AGAST2.GameUI
     /// </summary>
     public partial class FactsWindow : Window
     {
+
         public FactsWindow()
         {
             InitializeComponent();
+
         }
 
 
@@ -32,5 +35,15 @@ namespace AGAST2.GameUI
             mw.Show();
             this.Close();
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            var dataContext = (ViewModelFacts)this.DataContext;
+            dataContext.KeyModifer = e.SystemKey.ToString();
+            dataContext.OnKeyDown(e.Key.ToString());
+     
+        }
+
+
     }
 }
