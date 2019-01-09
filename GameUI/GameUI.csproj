@@ -78,6 +78,7 @@
     <Compile Include="Model\DAL\QueryManager.cs" />
     <Compile Include="Model\DAL\DataRetriever.cs" />
     <Compile Include="Model\Factory.cs" />
+    <Compile Include="Model\ScoreKeeper.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelFacts.cs" />
     <Compile Include="ViewModel\ViewModelTrivia.cs" />
@@ -86,12 +87,6 @@
     </Compile>
     <Compile Include="View\HowToPlayer.xaml.cs">
       <DependentUpon>HowToPlayer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PlayerOneWin.xaml.cs">
-      <DependentUpon>PlayerOneWin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PlayerTwoWin.xaml.cs">
-      <DependentUpon>PlayerTwoWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TriviaWindow.xaml.cs">
       <DependentUpon>TriviaWindow.xaml</DependentUpon>
@@ -120,14 +115,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\HowToPlayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PlayerOneWin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PlayerTwoWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,33 +171,31 @@
     <Content Include="Model\DAL\QueryResources\FactQueries\link_artist_artist.sql" />
     <Content Include="Model\DAL\QueryResources\FactQueries\link_artist_release.sql" />
     <Content Include="Model\DAL\QueryResources\FactQueries\link_release_release.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q1.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q10.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q10_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q11.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q11_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q12.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q12_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q13.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q13_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q1_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q2.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q2_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q3.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q3_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q4.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q4_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q5.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q5_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q6.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q6_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q7.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q7_false.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q8.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q9.sql" />
-    <Content Include="Model\DAL\QueryResources\QuestionQuerries\q9_false.sql" />
-    <Resource Include="View\p2.png" />
-    <Resource Include="View\p1.png" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q1.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q10.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q10_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q11.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q11_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q12.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q12_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q13.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q13_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q1_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q2.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q2_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q3.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q3_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q4.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q4_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q5.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q5_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q6.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q6_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q7.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q7_false.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q8.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q9.sql" />
+    <Content Include="Model\DAL\QueryResources\QuestionQueries\q9_false.sql" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\trivia.png" />

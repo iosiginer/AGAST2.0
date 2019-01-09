@@ -328,5 +328,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
-/GameUI/Model/DAL/QueryResources/FactQueries
-/GameUI/Model/DAL/QueryResources/QuestionQueries
+/Dump
+*.zip

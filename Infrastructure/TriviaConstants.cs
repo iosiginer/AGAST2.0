@@ -17,6 +17,6 @@ namespace AGAST2.Infrastructure
         public const string RIGHT_FALSE_KEY = "L";
         public static readonly string PLAYER1 = "player1";
         public static readonly string PLAYER2 = "player2";
-        public static readonly int RightQuestionPoints = 10;
+        public static readonly int RightQuestionPoints = 100;
     }
 }

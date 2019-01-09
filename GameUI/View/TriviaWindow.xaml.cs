@@ -25,10 +25,6 @@ namespace AGAST2.GameUI
         public TriviaWindow()
         {
             InitializeComponent();
-            var vm = new ViewModelTrivia();
-            DataContext = vm;
-            if (vm.CloseAction == null)
-                vm.CloseAction = new Action(() => this.Close());
         }       
 
 
@@ -50,5 +46,9 @@ namespace AGAST2.GameUI
             }
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
