@@ -10,12 +10,26 @@ namespace AGAST2.GameUI.DAL
 {
     public class DataRetriever : IDataRetriever
     {
+        private static DataRetriever instance = null;
         private MySqlConnection connection;
         private string connectionString;
 
-        public DataRetriever()
+        private DataRetriever()
         {
+            // Getting the connection string and creating a connection
             this.Initialize();
+        }
+
+        public static DataRetriever Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DataRetriever();
+                }
+                return instance;
+            }
         }
 
         private void Initialize()

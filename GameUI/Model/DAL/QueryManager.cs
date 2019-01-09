@@ -5,24 +5,39 @@ using System.Text.RegularExpressions;
 
 namespace AGAST2.GameUI.DAL
 {
+
     public class QueryManager
     {
+        private static QueryManager instance = null;
         private string queryDirectory;
         private string factDirectory;
         private Dictionary<int, string> phraseToQuery;
         private Dictionary<int, string> falseAnswersToQuery;
         private Dictionary<int, string> factToQuery;
 
-        public QueryManager()
+        private QueryManager()
         {
             phraseToQuery = new Dictionary<int, string>();
             falseAnswersToQuery = new Dictionary<int, string>();
             factToQuery = new Dictionary<int, string>();
-            //queryDirectory = System.Configuration.ConfigurationManager.AppSettings["queryResources"];
+            //queryDirectory = System.Configuration.ConfigurationManager.AppSettings["questionQueryResource"];
+            //factDirectory = System.Configuration.ConfugurationManager.AppSetting["FactQueryResource"];
             queryDirectory = "C:\\QueryResources\\QuestionQueries";
             factDirectory = "C:\\QueryResources\\FactQueries";
             InitializeQueriesFromDirectory(queryDirectory);
             InitializeQueriesFromDirectory(factDirectory);
+        }
+
+        public static QueryManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new QueryManager();
+                }
+                return instance;
+            }
         }
 
         public void InitializeQueriesFromDirectory(string directory)

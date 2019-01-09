@@ -9,6 +9,12 @@ namespace AGAST2.GameUI.Model
 {
     public class Factory
     {
+
+        public Factory()
+        {
+            //TODO implement.
+        }
+
         public Fact GetFact()
         {
             //TODO implement. 
