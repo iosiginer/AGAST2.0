@@ -21,14 +21,14 @@ namespace AGAST2.GameUI.Model
             randy = new Random();
             dataBase = DataRetriever.Instance;
             qManager = QueryManager.Instance;
-            this.QuestionsBank = dataBase.GetQuestionDictionary();
+            QuestionsBank = dataBase.GetQuestionDictionary();
         }
 
         // THIS IS FOR TESTING!!!!
         // NOT FINISHED!
         public Question GetQuestion()
         {
-            int rand = randy.Next(1, this.QuestionsBank.Count);
+            int rand = randy.Next(QuestionsBank.Count);
             JArray jerry1 = new JArray();
             JArray jerry2 = new JArray();
             jerry1 = dataBase.GetDataFromDB(qManager.GetQuestionQuery(rand));
