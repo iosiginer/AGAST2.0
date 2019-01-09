@@ -151,6 +151,9 @@
   <ItemGroup>
     <Resource Include="View\wrong.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\QueryResources\FactQueries\" />
+    <Folder Include="Model\QueryResources\QuestionQuerries\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
