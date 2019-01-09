@@ -19,7 +19,7 @@ namespace AGAST2.Infrastructure.LevelTypes
         /**
          * Default constructor. Returns dummy question.
          */
-        public Question()
+        public Question(string phrase)
         {
             Phrase = "Which of the following sharks says {0}";
             Options = new List<string> { "Babyshark", "Mommyshark", "Daddyshark", "Wireshark" };
