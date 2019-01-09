@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace AGAST2.GameUI.DAL
 {
@@ -17,40 +18,34 @@ namespace AGAST2.GameUI.DAL
         public DataRetriever()
         {
             this.Initialize();
-            this.InitializeQuestions();
-            //Initialize
+            //this.InitializeQuestions();
         }
 
         private void Initialize()
         {
             //connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
-            connectionString = "Server=localhost;Database=agast;UserID=root;Password=123123";
+            connectionString = "Database=agast;Data Source=localhost;User Id=root;Password=123123";
             connection = new MySqlConnection(connectionString);
 
         }
 
-        private JArray InitializeQuestions()
+        public Dictionary<int,string> InitializeQuestions()
         {
+            Dictionary<int, string> dict = new Dictionary<int,string>();
+            string commandString = "SELECT * FROM questions";
+            MySqlCommand command = new MySqlCommand(commandString);
+            command.Connection = connection;
             connection.Open();
-            JArray arr = new JArray();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM  questions");
             command.CommandType = CommandType.Text;
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                JObject question = new JObject();
-                {
-                    for (int i = 0; i < reader.FieldCount ;i++)
-                    {
-                        question[i] = reader[i].ToString();
-                    }
-                    arr.Add(question);
-                }
+                int key = reader.GetInt32(0);
+                dict.Add(key, reader.GetString(1));
             }
             reader.Close();
-            connection.Close();
-            return arr;
-
+            command.Connection.Close();
+            return dict;
         }
 
         public JArray GetQuestionByQuery(string query)
@@ -71,8 +66,10 @@ namespace AGAST2.GameUI.DAL
                 arr.Add(row);
 
             }
+            reader.Close();
             connection.Close();
             return arr;         
         }
+
     }
 }
