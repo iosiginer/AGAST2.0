@@ -74,7 +74,5 @@ namespace AGAST2.GameUI.DAL
             connection.Close();
             return arr;         
         }
-
-        public JArray GetFactByQuery(string query)
     }
 }

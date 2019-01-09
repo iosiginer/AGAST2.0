@@ -6,4 +6,8 @@
     <RootNamespace>AGAST2.Infrastructure</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
 </Project>
