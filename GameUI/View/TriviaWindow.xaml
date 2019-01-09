@@ -21,7 +21,7 @@
         <ItemsControl x:Name="Options" ItemsSource="{Binding Options}" HorizontalAlignment="Left" Margin="98,178,0,0" VerticalAlignment="Top" Width="290">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Content="{Binding}" Click="CheckAnswer"/>
+                    <Button Content="{Binding}" Click="SubmitAnswer" Margin="10"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
