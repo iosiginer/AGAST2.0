@@ -79,6 +79,7 @@ namespace AGAST2.GameUI.DAL
                 if (!line.StartsWith("#"))
                 {
                     queryString += line;
+                    queryString += "\n";
                 }
             }
             return queryString;

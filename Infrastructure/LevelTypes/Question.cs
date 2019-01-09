@@ -16,16 +16,24 @@ namespace AGAST2.Infrastructure.LevelTypes
         public string CorrectOption { get => _correctOption; set => _correctOption = value; }
         public string Subject { get => _subject; set => _subject = value; }
 
+        public Question(string phrase, List<string> options, string subject, string correctOption)
+        {
+            this.Phrase = phrase;
+            this.Options = options;
+            this.Subject = subject;
+            this.CorrectOption = correctOption;
+        }
+
         /**
          * Default constructor. Returns dummy question.
          */
-        public Question()
-        {
-            Phrase = "Which of the following sharks says {0}";
-            Options = new List<string> { "Babyshark", "Mommyshark", "Daddyshark", "Wireshark" };
-            Subject = "Doo doo doo-doo doo";
-            CorrectOption = "Wireshark";
-        }
+        //public Question()
+        //{
+        //    Phrase = "Which of the following sharks says {0}";
+        //    Options = new List<string> { "Babyshark", "Mommyshark", "Daddyshark", "Wireshark" };
+        //    Subject = "Doo doo doo-doo doo";
+        //    CorrectOption = "Wireshark";
+        //}
 
         public bool CheckIfCorrect(string chosenOption)
         {
