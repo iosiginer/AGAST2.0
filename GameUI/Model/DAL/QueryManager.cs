@@ -20,8 +20,8 @@ namespace AGAST2.GameUI.DAL
             phraseToQuery = new Dictionary<int, string>();
             falseAnswersToQuery = new Dictionary<int, string>();
             factToQuery = new Dictionary<int, string>();
-            //queryDirectory = System.Configuration.ConfigurationManager.AppSettings["questionQueryResource"];
-            //factDirectory = System.Configuration.ConfugurationManager.AppSetting["FactQueryResource"];
+            //queryDirectory = System.Configuration.ConfigurationManager.AppSettings["QuestionQueries"];
+            //factDirectory = System.Configuration.ConfigurationManager.AppSettings["FactQueries"];
             queryDirectory = "C:\\QueryResources\\QuestionQueries";
             factDirectory = "C:\\QueryResources\\FactQueries";
             InitializeQueriesFromDirectory(queryDirectory);
@@ -40,7 +40,7 @@ namespace AGAST2.GameUI.DAL
             }
         }
 
-        public void InitializeQueriesFromDirectory(string directory)
+        private void InitializeQueriesFromDirectory(string directory)
         {
             int queryId;
             string queryString = String.Empty;
@@ -84,13 +84,17 @@ namespace AGAST2.GameUI.DAL
             return queryString;
         }
 
-       
-        private string GetQuestionQuery(int phrase)
+        public string GetQuestionQuery(int phrase)
         {
             return this.phraseToQuery[phrase];
         }
 
-        private string GetFactQuery(int fact)
+        public string GetFalseQuestionQuery(int phrase)
+        {
+            return this.falseAnswersToQuery[phrase];
+        }
+
+        public string GetFactQuery(int fact)
         {
             return this.factToQuery[fact];
         }

@@ -34,8 +34,7 @@ namespace AGAST2.GameUI.DAL
 
         private void Initialize()
         {
-            //connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
-            connectionString = "Database=agast;Data Source=localhost;User Id=root;Password=123123";
+            connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBconnection"].ConnectionString;
             connection = new MySqlConnection(connectionString);
 
         }
