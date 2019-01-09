@@ -41,7 +41,7 @@ namespace AGAST2.GameUI
             var dataContext = (ViewModelFacts)this.DataContext;
             dataContext.KeyModifer = e.SystemKey.ToString();
             dataContext.OnKeyDown(e.Key.ToString());
-            
+     
         }
 
 

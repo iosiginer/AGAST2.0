@@ -76,13 +76,13 @@ namespace GameUI.ViewModel
             bool correctAnswer = CurrentFact.CheckIfCorrect(playerAndValue.Item2);
             if(correctAnswer)
             {
-                if (playerAndValue.Item1.Equals("Player1")) player1 += player1 + 1;
-                else player2 += player2 + 1;
+                if (playerAndValue.Item1.Equals("player1")) player1++;
+                else player2++;
                 
             } else
             {
-                if (playerAndValue.Item1.Equals("Player1")) _p1Life = _p1Life - 1;
-                else _p2Life = _p2Life - 1;
+                if (playerAndValue.Item1.Equals("player1")) LivesOne--;
+                else LivesTwo--;
 
             }
 
@@ -103,6 +103,33 @@ namespace GameUI.ViewModel
                 }
             }
         }
+
+        public int LivesOne
+        {
+            get => _p1Life;
+            set
+            {
+                if (_p1Life != value)
+                {
+                    _p1Life = value;
+                    RaisePropertyChanged("LivesOne");
+                }
+            }
+        }
+
+        public int LivesTwo
+        {
+            get => _p2Life;
+            set
+            {
+                if (_p2Life != value)
+                {
+                    _p2Life = value;
+                    RaisePropertyChanged("LivesTwo");
+                }
+            }
+        }
+
 
         public string FactAsString
         {
@@ -137,7 +164,8 @@ namespace GameUI.ViewModel
         private void Run()
         {
 
-                CurrentFact = Factory.GetFact();
+            CurrentFact = Factory.GetFact();
+            
 
         }
     }
