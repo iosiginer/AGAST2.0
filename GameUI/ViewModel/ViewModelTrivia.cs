@@ -1,6 +1,7 @@
 ﻿using AGAST2.GameUI.Model;
 using AGAST2.Infrastructure;
 using AGAST2.Infrastructure.LevelTypes;
+using GameUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,8 +18,9 @@ namespace GameUI.ViewModel
         private string _questionAsString;
         private ObservableCollection<string> _options;
         private int _lives;
-        private int _points;
         private bool _answered;
+
+        public ScoreKeeper ScoreKeeper { get; set; }
 
         public Action CloseAction { get; set; }
 
@@ -26,7 +28,27 @@ namespace GameUI.ViewModel
         {
             Factory = new Factory();
             Lives = TriviaConstants.InitialLives;
+            ScoreKeeper = new ScoreKeeper("You");
+            ScoreKeeper.MaxScoreReached += OnMaxScoreReached;
+            ScoreKeeper.ScoreUpdated += OnScoreUpdated;
             PlayRound();
+        }
+
+        private void OnScoreUpdated(object sender, EventArgs e)
+        {
+            RaisePropertyChanged("ScoreKeeper.CurrentScore ");
+        }
+
+        private void OnMaxScoreReached(object sender, EventArgs e)
+        {
+            Console.WriteLine("Max score reached");
+        }
+
+        private void Run()
+        {
+            while (Lives > 0)
+                PlayRound();
+
         }
 
         private Factory Factory { get => _factory; set => _factory = value; }
@@ -51,11 +73,10 @@ namespace GameUI.ViewModel
             if (!correctAnswer)
             {
                 Lives--;
-                Points--;
             }
             else
             {
-                Points += TriviaConstants.RightQuestionPoints;
+                ScoreKeeper.Add(TriviaConstants.RightQuestionPoints);
             }
             if (Lives > 0)
             {
@@ -66,11 +87,6 @@ namespace GameUI.ViewModel
             {
                 return false;
             }
-        }
-
-        private void EndGame()
-        {
-            throw new NotImplementedException();
         }
 
         public string QuestionAsString
@@ -110,19 +126,6 @@ namespace GameUI.ViewModel
                 {
                     _lives = value;
                     RaisePropertyChanged("Lives");
-                }
-            }
-        }
-
-        public int Points
-        {
-            get => _points;
-            set
-            {
-                if (_points != value)
-                {
-                    _points = value;
-                    RaisePropertyChanged("Points");
                 }
             }
         }

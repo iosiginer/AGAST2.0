@@ -9,6 +9,7 @@ namespace AGAST2.GameUI.Model
 {
     public class Factory
     {
+        bool first;
 
         public Factory()
         {
@@ -23,9 +24,14 @@ namespace AGAST2.GameUI.Model
 
         public Question GetQuestion()
         {
-            //TODO implement
-            return new Question();
+            if (!first)
+            {
+                first = true;
+                return new Question();
+            }
+            return new Question("Who is {0}", new List<string>() { "carlos", "pepe", "jose" }, "carlos", "this");
         }
+
 
     }
 }

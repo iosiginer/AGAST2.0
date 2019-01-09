@@ -27,6 +27,14 @@ namespace AGAST2.Infrastructure.LevelTypes
             CorrectOption = "Wireshark";
         }
 
+        public Question(string phrase, List<string> options, string correctOption, string subject)
+        {
+            Phrase = phrase;
+            Options = options;
+            CorrectOption = correctOption;
+            Subject = subject;
+        }
+
         public bool CheckIfCorrect(string chosenOption)
         {
             return chosenOption.Equals(CorrectOption);
