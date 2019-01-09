@@ -78,16 +78,29 @@
     <Compile Include="Model\DAL\QueryManager.cs" />
     <Compile Include="Model\DAL\DataRetriever.cs" />
     <Compile Include="Model\Factory.cs" />
-    <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelFacts.cs" />
     <Compile Include="ViewModel\ViewModelTrivia.cs" />
+    <Compile Include="View\GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HowToPlayer.xaml.cs">
+      <DependentUpon>HowToPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TriviaWindow.xaml.cs">
       <DependentUpon>TriviaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FactsWindow.xaml.cs">
       <DependentUpon>FactsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GameOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +113,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\HowToPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TriviaWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,14 +164,43 @@
   <ItemGroup>
     <Resource Include="View\back.png" />
     <Resource Include="View\backg.jpg" />
-    <Resource Include="View\correct.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\wrong.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\QueryResources\FactQueries\" />
     <Folder Include="Model\QueryResources\QuestionQuerries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\trivia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\keyL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\gameover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\heart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\heart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AGAST2.Infrastructure.LevelTypes
 {
-    public class Question : ILevel
+    public class QuestionWindow : ILevel
     {
         private string _phrase;
         private string _subject;
@@ -19,7 +19,7 @@ namespace AGAST2.Infrastructure.LevelTypes
         /**
          * Default constructor. Returns dummy question.
          */
-        public Question()
+        public QuestionWindow()
         {
             Phrase = "Which of the following sharks says {0}";
             Options = new List<string> { "Babyshark", "Mommyshark", "Daddyshark", "Wireshark" };

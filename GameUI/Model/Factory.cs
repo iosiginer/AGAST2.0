@@ -15,10 +15,10 @@ namespace AGAST2.GameUI.Model
             return new Fact();
         }
 
-        public Question GetQuestion()
+        public QuestionWindow GetQuestion()
         {
             //TODO implement
-            return new Question();
+            return new QuestionWindow();
         }
 
     }

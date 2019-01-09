@@ -13,7 +13,7 @@ namespace GameUI.ViewModel
     class ViewModelTrivia : ViewModelBase
     {
         private Factory _factory;
-        private Question _currentQuestion;
+        private QuestionWindow _currentQuestion;
         private string _questionAsString;
         private ObservableCollection<string> _options;
         private int _lives;
@@ -31,7 +31,7 @@ namespace GameUI.ViewModel
 
         private Factory Factory { get => _factory; set => _factory = value; }
 
-        public Question CurrentQuestion
+        public QuestionWindow CurrentQuestion
         {
             get => _currentQuestion;
             set
@@ -55,7 +55,7 @@ namespace GameUI.ViewModel
             }
             else
             {
-                Points += TriviaConstants.RightQuestionPoints;
+                //Points += TriviaConstants.RightQuestionPoints;
             }
             if (Lives > 0)
             {

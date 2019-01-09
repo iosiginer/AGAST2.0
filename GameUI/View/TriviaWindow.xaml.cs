@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AGAST2.Infrastructure.LevelTypes;
+using GameUI.View;
 using GameUI.ViewModel;
 
 namespace AGAST2.GameUI
@@ -42,7 +43,11 @@ namespace AGAST2.GameUI
         {
             bool success = ((ViewModelTrivia)DataContext).SubmitAnswer(((Button)sender).Content as string);
             if (!success)
-                this.Back(sender, e);
+            {
+                GameOver gameover = new GameOver();
+                gameover.Show();
+                this.Close();
+            }
         }
 
     }
