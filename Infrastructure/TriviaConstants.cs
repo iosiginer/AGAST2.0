@@ -17,8 +17,6 @@ namespace AGAST2.Infrastructure
         public const string RIGHT_FALSE_KEY = "L";
         public static readonly string PLAYER1 = "player1";
         public static readonly string PLAYER2 = "player2";
-
-        // TODO Uri and Tomer add here what you need
-
+        public static readonly int RightQuestionPoints = 10;
     }
 }
