@@ -18,8 +18,9 @@ namespace GameUI.ViewModel
         private string _factAsString;
         private bool _correct;
         List<String> _input;
-        private int player1 = 0, player2 = 0;
-        private int _p1Life = 3, _p2Life = 3; 
+        private int _player1 = 0, _player2 = 0;
+        private int _p1Life = 3, _p2Life = 3;
+        private bool _answered;
 
         private List<String> Get_List()
         {
@@ -35,13 +36,17 @@ namespace GameUI.ViewModel
         public string KeyModifer {  get; set; }
 
 
-        internal void OnKeyDown(String key)
+        internal bool OnKeyDown(String key)
         {
             _input = Get_List();
             if(_input.Contains(key))
             {
-                FirstClicker(key);
+                _answered = FirstClicker(key);
             }
+            else {
+                _answered = true;
+            }
+            return _answered;
             
         }
 
@@ -70,19 +75,26 @@ namespace GameUI.ViewModel
         }
 
 
-        private void FirstClicker(string key)
+        public bool FirstClicker(string key)
         {
             Tuple<string, string> playerAndValue = GetClickerValues(key);
             bool correctAnswer = CurrentFact.CheckIfCorrect(playerAndValue.Item2);
             if(correctAnswer)
             {
-                if (playerAndValue.Item1.Equals("player1")) player1++;
-                else player2++;
+                if (playerAndValue.Item1.Equals("player1")) ScoreOne++;
+                else ScoreTwo++;
+                return true;
                 
-            } else
-            {
+            } else {
                 if (playerAndValue.Item1.Equals("player1")) LivesOne--;
                 else LivesTwo--;
+                if (LivesTwo == 0) return false;
+                else if (LivesOne == 0) return false;
+                else
+                {
+                    CurrentFact = Factory.GetFact();
+                    return true;
+                }
 
             }
 
@@ -100,6 +112,32 @@ namespace GameUI.ViewModel
                 {
                     _currentFact = value;
                     FactAsString = _currentFact.AsString();
+                }
+            }
+        }
+
+        public int ScoreOne
+        {
+            get => _player1;
+            set
+            {
+                if (_player1 != value)
+                {
+                    _player1 = value;
+                    RaisePropertyChanged("ScoreOne");
+                }
+            }
+        }
+
+        public int ScoreTwo
+        {
+            get => _player2;
+            set
+            {
+                if (_player2 != value)
+                {
+                    _player2 = value;
+                    RaisePropertyChanged("ScoreTwo");
                 }
             }
         }
@@ -159,6 +197,8 @@ namespace GameUI.ViewModel
             Factory = new Factory();
             Run();
         }
+
+        public bool Answered { get => _answered; set => _answered = value; }
 
 
         private void Run()

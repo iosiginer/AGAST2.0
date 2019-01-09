@@ -1,4 +1,6 @@
-﻿using GameUI.ViewModel;
+﻿using AGAST2.Infrastructure.LevelTypes;
+using GameUI.View;
+using GameUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +41,13 @@ namespace AGAST2.GameUI
         {
             Window triviaWindow = new TriviaWindow { DataContext = new ViewModelTrivia() };
             triviaWindow.Show();
+            this.Close();
+        }
+
+        private void Question_Click(object sender, RoutedEventArgs e)
+        {
+            HowToPlay instructionsWindow = new HowToPlay();
+            instructionsWindow.Show();
             this.Close();
         }
     }
