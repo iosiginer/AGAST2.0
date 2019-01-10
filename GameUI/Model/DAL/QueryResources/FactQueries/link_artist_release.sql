@@ -1,4 +1,4 @@
-#artist release = {0} {0} {0} 
+#3fact
 SELECT link_artist_release.artist,link_artist_release.release,link_type.link_phrase ,reverse_link_phrase,short_link_phrase
 FROM 
 link_artist_release JOIN artist_facts JOIN link JOIN link_type JOIN release_facts

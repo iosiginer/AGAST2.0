@@ -1,7 +1,10 @@
 #5false
 #Where the most artist from ?
-SELECT name FROM area WHERE id=(
+SELECT area.name FROM area JOIN (
 SELECT area
 FROM artist
 GROUP BY area 
-LIMIT 3);
+ORDER BY RAND()
+LIMIT 3) as sub 
+where area.id = sub.area;
+ 

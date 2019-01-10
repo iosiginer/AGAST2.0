@@ -16,6 +16,7 @@ namespace AGAST2.GameUI.Model
         private QueryManager qManager;
         private Random randy;
         private int prevRand;
+        private int factBankSize = 3;
         private Dictionary<int, string> QuestionsBank;
 
         public Factory()
@@ -28,37 +29,46 @@ namespace AGAST2.GameUI.Model
         }
 
         
-        // TODO finish this...
-        // just need to access the jarray correctly to properly build the question
         public Question GetQuestion()
         {
+            string subject = String.Empty;
             List<string> falseAnswers = new List<string>();
             int rand = randy.Next(1,QuestionsBank.Count);
+            // Getting a random question making sure it exists and that its not the previous question
             while (!QuestionsBank.ContainsKey(rand) && rand!=prevRand)
             {
                 rand = randy.Next(1, QuestionsBank.Keys.Max());
             }
+            prevRand = rand;
             string phrase = QuestionsBank[rand];
-            JArray jerry1 = new JArray();
-            JArray jerry2 = new JArray();
-            //jerry1 = dataBase.GetDataFromDB(qManager.GetQuestionQuery(rand));
-            //if (HasPlaceholder(phrase))
-            //{
-            //   phrase = String.Format(phrase, jerry1[0]);
-            //}
-            //string correctAnswer = String.Empty;
-            //jerry2 = dataBase.GetDataFromDB(qManager.GetFalseQuestionQuery(rand));
-            //foreach (string option in jerry2)
-            //{
-            //    falseAnswers.Add(option);
-            //}
-            //return new Question(phrase, falseAnswers, correctAnswer , "yepppppp");
-            return new Question("this is the phrase", new List<string>(), "correct answer", "subject");
+            // Getting the query for the question and proccessing the data
+            JArray jerry1 = dataBase.GetDataFromDB(qManager.GetQuestionQuery(rand));
+            // Getting the question subject if it has one and trimming it
+            if (HasPlaceholder(phrase))
+            {
+                foreach (JToken entry in jerry1)
+                {
+                    subject = entry["template"].ToString().TrimEnd('\r');
+                }
+            }
+            // Getting the correct answer
+            string correctAnswer = String.Empty;
+            foreach (JToken entry in jerry1)
+            {
+                correctAnswer = entry["answer"].ToString().Trim();
+            }
+            // Getting the false answers for the question
+            JArray jerry2 = dataBase.GetDataFromDB(qManager.GetFalseQuestionQuery(rand));
+            foreach (JToken entry in jerry2)
+            {
+                falseAnswers.Add(entry["false_answer"].ToString());
+            }
+            return new Question(phrase, falseAnswers, correctAnswer, subject);
         }
 
         public Fact GetFact()
         {
-            //TODO implement. 
+            int rand = randy.Next(1, factBankSize);
             return new Fact();
         }
 

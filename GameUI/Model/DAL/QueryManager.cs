@@ -44,9 +44,10 @@ namespace AGAST2.GameUI.DAL
         {
             int queryId;
             string queryString = String.Empty;
-         /*   foreach (string file in Directory.EnumerateFiles(directory, "*.sql"))
+            foreach (string file in Directory.EnumerateFiles(directory, "*.sql"))
             {
                 string[] fileLines = File.ReadAllLines(file);
+                // Add a false answers query
                 if (fileLines[0].StartsWith("#") && fileLines[0].EndsWith("false"))
                 {
                     Int32.TryParse(Regex.Match(fileLines[0], @"\d+").Value, out queryId);
@@ -54,6 +55,7 @@ namespace AGAST2.GameUI.DAL
                     falseAnswersToQuery.Add(queryId, queryString);
 
                 }
+                // Adding a question query
                 else if (fileLines[0].StartsWith("#") && !fileLines[0].EndsWith("fact"))
                 {
                     Int32.TryParse(Regex.Match(fileLines[0], @"\d+").Value, out queryId);
@@ -61,6 +63,7 @@ namespace AGAST2.GameUI.DAL
                     Console.WriteLine(queryId);
                     phraseToQuery.Add(queryId, queryString);
                 }
+                // Adding a fact query
                 else
                 {
                     Int32.TryParse(Regex.Match(fileLines[0], @"\d+").Value, out queryId);
@@ -68,7 +71,7 @@ namespace AGAST2.GameUI.DAL
                     factToQuery.Add(queryId, queryString);
                 }
 
-            }*/
+            }
         }
 
         private string TrimFileToQuery(string[] fileLines)
@@ -79,7 +82,7 @@ namespace AGAST2.GameUI.DAL
                 if (!line.StartsWith("#"))
                 {
                     queryString += line;
-                    queryString += "\n";
+                    queryString += " ";
                 }
             }
             return queryString;
