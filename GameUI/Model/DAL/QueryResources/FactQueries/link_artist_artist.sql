@@ -1,4 +1,4 @@
-#artist artist = {0} {0} {0} 
+#1fact
 SELECT a1.name as 'template_1', a2.name 'template_2' ,link_phrase#,reverse_link_phrase,short_link_phrase 
 FROM
 (

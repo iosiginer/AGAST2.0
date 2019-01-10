@@ -1,7 +1,9 @@
 #6false
 #Who is the artist with the most cooperations? 
-SELECT name FROM artist WHERE id=(
+SELECT artist.name FROM artist join (
 SELECT artist
 FROM artist_credit_name
 GROUP BY artist 
-LIMIT 3);
+order by rand()
+LIMIT 3) sub
+where sub.artist = artist.id;
