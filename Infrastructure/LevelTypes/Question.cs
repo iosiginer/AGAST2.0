@@ -31,8 +31,24 @@ namespace AGAST2.Infrastructure.LevelTypes
         {
             Phrase = phrase;
             Options = options;
+            Shuffle(Options);
+            Options.Add("Other");
             CorrectOption = correctOption;
             Subject = subject;
+        }
+
+        private void Shuffle(List<string> options)
+        {
+            int n = options.Count;
+            Random random = new Random();
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                string value = options[k];
+                options[k] = options[n];
+                options[n] = value;
+            }
         }
 
         public bool CheckIfCorrect(string chosenOption)
@@ -44,5 +60,7 @@ namespace AGAST2.Infrastructure.LevelTypes
         {
             return String.Format(Phrase, Subject as string);
         }
+
+
     }
 }
