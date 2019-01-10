@@ -71,15 +71,24 @@ namespace AGAST2.GameUI.Model
         {
             int rand = randy.Next(1, factBankSize);
             string fact = String.Empty;
+            string ent1 = String.Empty;
+            string ent2 = String.Empty;
+            string link_phrase = String.Empty;
             List<string> factInformation = new List<string>();
             JArray jerry = dataBase.GetDataFromDB(qManager.GetFactQuery(rand));
-            var a = jerry[1];
+            var a = jerry[0];
             foreach (JToken entry in jerry)
             {
-                
+                ent1 = entry["template_1"].ToString().TrimEnd();
+                ent2 = entry["template_2"].ToString().TrimEnd();
+                link_phrase = entry["link_phrase"].ToString().Trim();
+            }
+            if (HasPlaceholder(link_phrase))
+            {
+                String.Format(link_phrase, ent1);
             }
             
-
+            //TODO return the fact after proccessing
 
 
             return new Fact(fact, true);
