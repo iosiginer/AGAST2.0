@@ -1,5 +1,5 @@
 #1fact
-SELECT a1.name , a2.name ,link_phrase,reverse_link_phrase,short_link_phrase FROM
+SELECT a1.name AS name1 , a2.name AS name2 ,link_phrase,reverse_link_phrase,short_link_phrase FROM
 
 (
 

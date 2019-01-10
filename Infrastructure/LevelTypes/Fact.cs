@@ -7,15 +7,16 @@ namespace AGAST2.Infrastructure.LevelTypes
     public class Fact : ILevel
     {
         private string _phrase;
-        private string _correctOption;
+        private bool _correctOption;
 
         public string Phrase { get => _phrase; set => _phrase = value; }
-        public string CorrectOption { get => _correctOption; set => _correctOption = value; }
+        public bool CorrectOption { get => _correctOption; set => _correctOption = value; }
 
-        public Fact()
+        public Fact(string phrase, bool isCorrect)
         {
-            Phrase = "All your base are belong to us";
-            CorrectOption = TriviaConstants.True;
+            this.Phrase = phrase;
+            this.CorrectOption = isCorrect;
+
         }
 
         public string AsString()
@@ -25,7 +26,7 @@ namespace AGAST2.Infrastructure.LevelTypes
 
         public bool CheckIfCorrect(string chosenOption)
         {
-            return chosenOption.Equals(CorrectOption);
+            return CorrectOption;
         }
     }
 }

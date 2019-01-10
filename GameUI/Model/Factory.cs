@@ -32,23 +32,23 @@ namespace AGAST2.GameUI.Model
         public Question GetQuestion()
         {
             string subject = String.Empty;
-            List<string> falseAnswers = new List<string>();
-            int rand = randy.Next(1,QuestionsBank.Count);
+            List<string> options = new List<string>();
+            int randomInt = randy.Next(1,QuestionsBank.Count);
             // Getting a random question making sure it exists and that its not the previous question
-            while (!QuestionsBank.ContainsKey(rand) && rand!=prevRand)
+            while (!QuestionsBank.ContainsKey(randomInt) && randomInt != prevRand)
             {
-                rand = randy.Next(1, QuestionsBank.Keys.Max());
+                randomInt = randy.Next(1, QuestionsBank.Keys.Max());
             }
-            prevRand = rand;
-            string phrase = QuestionsBank[rand];
+            prevRand = randomInt;
+            string phrase = QuestionsBank[randomInt];
             // Getting the query for the question and proccessing the data
-            JArray jerry1 = dataBase.GetDataFromDB(qManager.GetQuestionQuery(rand));
+            JArray jerry1 = dataBase.GetDataFromDB(qManager.GetQuestionQuery(randomInt));
             // Getting the question subject if it has one and trimming it
             if (HasPlaceholder(phrase))
             {
                 foreach (JToken entry in jerry1)
                 {
-                    subject = entry["template"].ToString().TrimEnd('\r');
+                    subject = entry["template"].ToString().TrimEnd('\r','\n');
                 }
             }
             // Getting the correct answer
@@ -57,19 +57,32 @@ namespace AGAST2.GameUI.Model
             {
                 correctAnswer = entry["answer"].ToString().Trim();
             }
+            options.Add(correctAnswer);
             // Getting the false answers for the question
-            JArray jerry2 = dataBase.GetDataFromDB(qManager.GetFalseQuestionQuery(rand));
+            JArray jerry2 = dataBase.GetDataFromDB(qManager.GetFalseQuestionQuery(randomInt));
             foreach (JToken entry in jerry2)
             {
-                falseAnswers.Add(entry["false_answer"].ToString());
+                options.Add(entry["false_answer"].ToString().Trim());
             }
-            return new Question(phrase, falseAnswers, correctAnswer, subject);
+            return new Question(phrase, options, correctAnswer, subject);
         }
 
         public Fact GetFact()
         {
             int rand = randy.Next(1, factBankSize);
-            return new Fact();
+            string fact = String.Empty;
+            List<string> factInformation = new List<string>();
+            JArray jerry = dataBase.GetDataFromDB(qManager.GetFactQuery(rand));
+            var a = jerry[1];
+            foreach (JToken entry in jerry)
+            {
+                
+            }
+            
+
+
+
+            return new Fact(fact, true);
         }
 
         public bool HasPlaceholder(string s)
