@@ -22,24 +22,15 @@ namespace GameUI.ViewModel
         private int _p1Life = 3, _p2Life = 3;
         int _answered = 0;
 
-        private List<String> Get_List()
-        {
-            List<String> input = new List<string>();
-            input.Add("A");
-            input.Add("S");
-            input.Add("K");
-            input.Add("L");
-            return input;
-        }
-
-
+        public List<string> Input { get => _input; set => _input = value; }
+        private Factory Factory { get => _factory; set => _factory = value; }
+        public int Answered { get => _answered; set => _answered = value; }
+        public bool Correct { get => _correct; set => _correct = value; }
         public string KeyModifer {  get; set; }
-
 
         internal int OnKeyDown(String key)
         {
-            _input = Get_List();
-            if(_input.Contains(key))
+            if(Input.Contains(key))
             {
                 _answered = FirstClicker(key);
             }
@@ -47,7 +38,6 @@ namespace GameUI.ViewModel
                 _answered = 0;
             }
             return _answered;
-            
         }
 
         private Tuple<string, string> GetClickerValues(string key)
@@ -103,12 +93,10 @@ namespace GameUI.ViewModel
                     CurrentFact = Factory.GetFact();
                     return 0;
                 }
-
             }
-
         }
         
-        private Factory Factory { get => _factory; set => _factory = value; }
+
 
        
         public Fact CurrentFact
@@ -196,25 +184,19 @@ namespace GameUI.ViewModel
             Correct = CurrentFact.CheckIfCorrect(content);
         }
 
-        public bool Correct { get => _correct; set => _correct = value; }
-
-
         public ViewModelFacts()
         {
-            
             Factory = new Factory();
+            Input = new List<string>() { TriviaConstants.LEFT_TRUE_KEY,
+                                        TriviaConstants.LEFT_FALSE_KEY,
+                                        TriviaConstants.RIGHT_FALSE_KEY,
+                                        TriviaConstants.RIGHT_TRUE_KEY };
             Run();
         }
 
-        public int Answered { get => _answered; set => _answered = value; }
-
-
         private void Run()
         {
-
             CurrentFact = Factory.GetFact();
-            
-
         }
     }
 }

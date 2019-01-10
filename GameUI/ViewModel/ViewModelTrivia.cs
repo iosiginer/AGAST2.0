@@ -18,9 +18,21 @@ namespace GameUI.ViewModel
         private string _questionAsString;
         private ObservableCollection<string> _options;
         private int _lives;
+        private int _score;
         private bool _answered;
 
-        public ScoreKeeper ScoreKeeper { get; set; }
+        public int Score
+        {
+            get => _score;
+            set
+            {
+                if (_score != value)
+                {
+                    _score = value;
+                    RaisePropertyChanged("Score");
+                }
+            }
+        }
 
         public Action CloseAction { get; set; }
 
@@ -28,9 +40,7 @@ namespace GameUI.ViewModel
         {
             Factory = new Factory();
             Lives = TriviaConstants.InitialLives;
-            ScoreKeeper = new ScoreKeeper("You");
-            ScoreKeeper.MaxScoreReached += OnMaxScoreReached;
-            ScoreKeeper.ScoreUpdated += OnScoreUpdated;
+            Score = 0;
             PlayRound();
         }
 
@@ -76,7 +86,7 @@ namespace GameUI.ViewModel
             }
             else
             {
-                ScoreKeeper.Add(TriviaConstants.RightQuestionPoints);
+                Score += TriviaConstants.RightQuestionPoints;
             }
             if (Lives > 0)
             {
