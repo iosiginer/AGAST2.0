@@ -1,4 +1,4 @@
-#artist release = {0} {0} {0} 
+#3fact
 
 SELECT artist_facts.name as 'template_1' , release_facts.name as 'template_2' 
 ,link_phrase 

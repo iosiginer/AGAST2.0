@@ -1,4 +1,4 @@
-#release release = {0} {0} {0} 
+#2fact
 SELECT a1.name , a2.name ,link_phrase,reverse_link_phrase,short_link_phrase FROM
 (
 
