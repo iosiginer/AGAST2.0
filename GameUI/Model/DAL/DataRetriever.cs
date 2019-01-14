@@ -88,7 +88,7 @@ namespace AGAST2.GameUI.DAL
             int nameColum = 0;
             string artistName = String.Empty;
             connection.Open();
-            string query = "SELECT name FROM artist_facts ORDER BY RAND() limit 1";
+            string query = "SELECT name FROM artist ORDER BY RAND() limit 1";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.CommandType = CommandType.Text;
             MySqlDataReader reader = command.ExecuteReader();
@@ -107,7 +107,7 @@ namespace AGAST2.GameUI.DAL
             int nameColum = 0;
             string releaseName = "";
             connection.Open();
-            string query = "SELECT name FROM release_facts ORDER BY RAND() limit 1";
+            string query = "SELECT name FROM release ORDER BY RAND() limit 1";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.CommandType = CommandType.Text;
             MySqlDataReader reader = command.ExecuteReader();

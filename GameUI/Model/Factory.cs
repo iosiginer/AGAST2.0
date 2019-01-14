@@ -69,6 +69,7 @@ namespace AGAST2.GameUI.Model
 
         public Fact GetFact()
         {
+            bool isCorrectFact = true;
             int rand = randy.Next(1, factBankSize);
             string fact = String.Empty;
             string ent1 = String.Empty;
@@ -83,21 +84,37 @@ namespace AGAST2.GameUI.Model
                 ent2 = entry["template_2"].ToString().TrimEnd();
                 link_phrase = entry["link_phrase"].ToString().Trim();
             }
+
+            //************************************************************************
+            // DEAR IOSI, I DID ALITTLE BIT OF CODE. DIDNT CHECK THINGS THROUGLY!!!!!!
+            // ***********************************************************************
+            // IF IT DOESNT ALWAYS WORK ITS BECAUSE - either the query returns a null.
+            // or because the query doesnt return colums named "tempate_1" "tempalte_2" which i parse by later 
+            // but returns "name" instead.....
+            // these are both problems with the queries
+
+            // Randomize if to falsify the fact or not
+            rand = randy.Next(0, 1);
+            if (rand == 0)
+            {
+                ent2 = dataBase.GetRandomArtist();
+                isCorrectFact = false;
+            }
+            // If theres a placeholder we'll replace it and remove any others
             if (HasPlaceholder(link_phrase))
             {
                 String.Format(link_phrase, ent1);
+                // Doesnt really work becasue i dont know regular expressions ¯\_(ツ)_/¯
+                Regex.Replace(link_phrase, "{*}", string.Empty);
+            }
+            // Otherwise just building the fact
+            else
+            {
+                fact = ent1 + link_phrase + ent1;
             }
             
-            //TODO HERE
-            // Return the fact as a ent1 + link_phrase + ent2 string.
-            // If link_phrase has a template (some have some dont) need to insert ent1 into it 
-            // and delete the rest of the templates (some phrases have 3 templates,
-            // only need to insert into one and get rid of the rest)
-            // For Example "{member}{original}{additional} is a member in the band" + ent2
-            // Also need to change the fact but theres no time for that......
-
-
-            return new Fact(fact, true);
+            
+            return new Fact(fact, isCorrectFact);
         }
 
         public bool HasPlaceholder(string s)
