@@ -88,7 +88,13 @@ namespace AGAST2.GameUI.Model
                 String.Format(link_phrase, ent1);
             }
             
-            //TODO return the fact after proccessing
+            //TODO HERE
+            // Return the fact as a ent1 + link_phrase + ent2 string.
+            // If link_phrase has a template (some have some dont) need to insert ent1 into it 
+            // and delete the rest of the templates (some phrases have 3 templates,
+            // only need to insert into one and get rid of the rest)
+            // For Example "{member}{original}{additional} is a member in the band" + ent2
+            // Also need to change the fact but theres no time for that......
 
 
             return new Fact(fact, true);
