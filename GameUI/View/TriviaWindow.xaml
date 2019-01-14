@@ -27,7 +27,7 @@
         <Label Content="Lives:" HorizontalAlignment="Left" Margin="353,17,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Lives" Content="{Binding Lives}" Height="33"  VerticalAlignment="Top"  Margin="393,14,41,0"  FontSize="20" HorizontalAlignment="Center" Width="46"/>
         <Label Content="Score" HorizontalAlignment="Left" Margin="24,18,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Score" Content="{Binding ScoreKeeper.CurrentScore}" Height="33"  VerticalAlignment="Top"  Margin="63,11,373,0"  FontSize="20" HorizontalAlignment="Center" Width="44"/>
+        <Label x:Name="Score" Content="{Binding Score}" Height="33"  VerticalAlignment="Top"  Margin="63,15,373,0"  FontSize="20" HorizontalAlignment="Center" Width="44"/>
 
     </Grid>
 </Window>

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameUI", "GameUI\GameUI.csproj", "{EDEA92F6-0946-47D6-95AB-D1DA3F427F83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "..\tests\tests\tests.csproj", "{C3FC2A54-6439-49AC-AA33-19526F27106E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{EDEA92F6-0946-47D6-95AB-D1DA3F427F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDEA92F6-0946-47D6-95AB-D1DA3F427F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDEA92F6-0946-47D6-95AB-D1DA3F427F83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3FC2A54-6439-49AC-AA33-19526F27106E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3FC2A54-6439-49AC-AA33-19526F27106E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3FC2A54-6439-49AC-AA33-19526F27106E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3FC2A54-6439-49AC-AA33-19526F27106E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
