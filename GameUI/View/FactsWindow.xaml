@@ -17,6 +17,11 @@
         <Grid.Background>
             <ImageBrush ImageSource="backg.jpg"/>
         </Grid.Background>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="103" Margin="287,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="116"/>
+
+
+
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="103" Margin="10,20,0,0" Stroke="Black" VerticalAlignment="Top" Width="116"/>
         <Image Source="keyA.png" Margin="73,303,338.667,57.667" RenderTransformOrigin="0.694,0.628" />
         <Image Source="keyS.png" Margin="272,303,136.667,57.667" />
         <Image Source="keyK.png" Margin="140,303,255.667,57.667" />
@@ -24,22 +29,22 @@
         <Image Source="question.png" Margin="400,0,10.333,360.667" Grid.ColumnSpan="2" />
 
 
-        <Label x:Name="Fact" Height="91"  VerticalAlignment="Top"  Margin="23,155,11.333,0"  HorizontalAlignment="Center" Content="{Binding FactAsString}" FontSize="25" Width="459" Grid.ColumnSpan="2" />
+        <TextBlock x:Name="Fact" TextWrapping="Wrap"  Height="104" HorizontalAlignment="Center"  FontSize="25" FontFamily="Comic Sans MS"  Text="{Binding FactAsString}"  Width="328" />
         <Button  Click="Back"
             MinWidth="80" Margin="0,384,372.667,-0.333" Content="Back" Background="LightBlue" FontFamily="Verdana"  FontSize="12" BorderBrush="DarkBlue" />
         <Button  Style="{StaticResource ButtonStyle}" Content="True" FontSize="20" Background="LightBlue" HorizontalAlignment="Left" Margin="73,251,0,0" VerticalAlignment="Top" Width="150" Height="47"/>
         <Button  Style="{StaticResource ButtonStyle}" Content="False" FontSize="20" Background="LightBlue" HorizontalAlignment="Left" Margin="272,251,0,0" VerticalAlignment="Top" Width="158" Height="47"/>
-        <Label Content="Player 1:  " HorizontalAlignment="Left" Margin="285,58,0,0" VerticalAlignment="Top" Height="36" Width="57"/>
-        <Label Content="Player 2:  " HorizontalAlignment="Left" Margin="285,89,0,0" VerticalAlignment="Top" Height="27" Width="98"/>
+        <Label Content="Player 1:  " HorizontalAlignment="Left" Margin="295,58,0,0" VerticalAlignment="Top" Height="36" Width="57"/>
+        <Label Content="Player 2:  " HorizontalAlignment="Left" Margin="295,89,0,0" VerticalAlignment="Top" Height="27" Width="98"/>
         <Label x:Name="LivesOne" Content="{Binding LivesOne}" HorizontalAlignment="Left" Margin="342,58,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LivesTwo" Content="{Binding LivesTwo}" HorizontalAlignment="Left"  Margin="342,89,0,0"  VerticalAlignment="Top"/>
-        <Label Content="Score:" HorizontalAlignment="Left" Margin="75,20,0,0" VerticalAlignment="Top" Height="36" Width="67" FontSize="20"/>
+        <Label Content="Score" HorizontalAlignment="Left" Margin="23,22,0,0" VerticalAlignment="Top" Height="36" Width="67" FontSize="20"/>
         <Label Content="Player 1:" HorizontalAlignment="Left" Margin="23,58,0,0" VerticalAlignment="Top"/>
         <Label Content="Player 2:" HorizontalAlignment="Left" Margin="23,89,0,0" VerticalAlignment="Top" Height="29" Width="60"/>
         <Label x:Name="ScoreOne" Content="{Binding ScoreOne}"  HorizontalAlignment="Left" Margin="75,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.203,0.173"/>
         <Label x:Name="ScoreTwo" Content="{Binding ScoreTwo}"  HorizontalAlignment="Left" Margin="75,89,0,0" VerticalAlignment="Top"/>
 
-        <Label Content="Lives:" HorizontalAlignment="Left" Margin="323,20,0,0" VerticalAlignment="Top" Height="45" Width="80" FontSize="20"/>
+        <Label Content="Lives" HorizontalAlignment="Left" Margin="313,20,0,0" VerticalAlignment="Top" Height="45" Width="80" FontSize="20"/>
         <Button Click="Instructions" Background="Transparent" BorderThickness="0" Grid.ColumnSpan="2"  HorizontalAlignment="Left" Margin="408,10,0,0" VerticalAlignment="Top" Width="85" Height="68"/>
         <Label x:Name="Correct" Content="{Binding Correct}" HorizontalAlignment="Left" Margin="323,368,-21.667,0" VerticalAlignment="Top" Height="37" Width="192" FontSize="25" Grid.ColumnSpan="2"/>
 

@@ -18,5 +18,7 @@ namespace AGAST2.Infrastructure
         public static readonly string PLAYER1 = "player1";
         public static readonly string PLAYER2 = "player2";
         public static readonly int RightQuestionPoints = 100;
+        public static readonly string PlaceHolder = "{[A-Za-z]+}";
+
     }
 }

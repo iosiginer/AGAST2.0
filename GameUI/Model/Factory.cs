@@ -7,6 +7,7 @@ using AGAST2.GameUI.DAL;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace AGAST2.GameUI.Model
 {
@@ -18,6 +19,7 @@ namespace AGAST2.GameUI.Model
         private int prevRand;
         private int factBankSize = 3;
         private Dictionary<int, string> QuestionsBank;
+        private int _placeHolderCounter;
 
         public Factory()
         {
@@ -70,18 +72,18 @@ namespace AGAST2.GameUI.Model
         public Fact GetFact()
         {
             bool isCorrectFact = true;
-            int rand = randy.Next(1, factBankSize);
-            string fact = String.Empty;
-            string ent1 = String.Empty;
-            string ent2 = String.Empty;
-            string link_phrase = String.Empty;
+            int queryTemplateNumber = randy.Next(1, factBankSize);
+            queryTemplateNumber = 1;
+            string fact, entryOne, entryTwo, link_phrase;
+            entryOne = entryTwo = link_phrase = String.Empty;
             List<string> factInformation = new List<string>();
-            JArray jerry = dataBase.GetDataFromDB(qManager.GetFactQuery(rand));
+
+            JArray jerry = dataBase.GetDataFromDB(qManager.GetFactQuery(queryTemplateNumber));
             var a = jerry[0];
             foreach (JToken entry in jerry)
             {
-                ent1 = entry["template_1"].ToString().TrimEnd();
-                ent2 = entry["template_2"].ToString().TrimEnd();
+                entryOne = entry["template_1"].ToString().TrimEnd()+ " is a ";
+                entryTwo = " " + entry["template_2"].ToString().TrimEnd();
                 link_phrase = entry["link_phrase"].ToString().Trim();
             }
 
@@ -93,33 +95,65 @@ namespace AGAST2.GameUI.Model
             // but returns "name" instead.....
             // these are both problems with the queries
 
-            // Randomize if to falsify the fact or not
-            rand = randy.Next(0, 1);
-            if (rand == 0)
+            bool falsifyFact = randy.Next(100) <= 50 ? true : false;
+            if (falsifyFact)
             {
-                ent2 = dataBase.GetRandomArtist();
+                entryTwo = " " + dataBase.GetRandomArtist();
                 isCorrectFact = false;
             }
             // If theres a placeholder we'll replace it and remove any others
-            if (HasPlaceholder(link_phrase))
-            {
-                String.Format(link_phrase, ent1);
-                // Doesnt really work becasue i dont know regular expressions ¯\_(ツ)_/¯
-                Regex.Replace(link_phrase, "{*}", string.Empty);
-            }
-            // Otherwise just building the fact
-            else
-            {
-                fact = ent1 + link_phrase + ent1;
-            }
+            fact = BuildFactPhrase(entryOne, entryTwo, link_phrase);
+
             
             
             return new Fact(fact, isCorrectFact);
         }
 
+        private string BuildFactPhrase(string entryOne, string entryTwo, string link_phrase)
+        {
+            _placeHolderCounter = 0;
+            string fact = String.Empty;
+            if (HasPlaceholder(link_phrase))
+            {
+                MatchEvaluator evaluator = new MatchEvaluator(PlaceHolderCounter);
+                link_phrase = Regex.Replace(link_phrase, TriviaConstants.PlaceHolder, evaluator);
+                link_phrase = Regex.Replace(link_phrase, "{[1-9]*}", string.Empty);
+
+                fact = String.Format(link_phrase, entryOne) + entryTwo;
+                // Doesnt really work becasue i dont know regular expressions ¯\_(ツ)_/¯
+            }
+            else
+            {
+                fact = entryOne + link_phrase + entryTwo;
+            }
+            return RemoveExcessiveWhitespace(fact);
+        }
+
         public bool HasPlaceholder(string s)
         {
-            return Regex.IsMatch(s, "{\\d+}");
+            return Regex.IsMatch(s, TriviaConstants.PlaceHolder);
+        }
+
+        private string PlaceHolderCounter(Match match)
+        {
+            return "{" + _placeHolderCounter++ + "}"; ;
+        }
+
+        private string RemoveExcessiveWhitespace(string value)
+        {
+            if (value == null) { return null; }
+
+            var builder = new StringBuilder();
+            var ignoreWhitespace = false;
+            foreach (var c in value)
+            {
+                if (!ignoreWhitespace || c != ' ')
+                {
+                    builder.Append(c);
+                }
+                ignoreWhitespace = c == ' ';
+            }
+            return builder.ToString();
         }
 
     }

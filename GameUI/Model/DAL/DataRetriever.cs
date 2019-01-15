@@ -67,13 +67,24 @@ namespace AGAST2.GameUI.DAL
             MySqlCommand command = new MySqlCommand(query, connection);
             command.CommandType = CommandType.Text;
             MySqlDataReader reader = command.ExecuteReader();
+
+            // make sure the reader works
+            while (!reader.HasRows)
+            {
+                connection.Close();
+                connection.Open();
+                command = new MySqlCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+            }
+
             while (reader.Read())
             {
                 JObject row = new JObject();
                 for (int i = 0; i < reader.FieldCount; i++) 
                 {
                     string columName = reader.GetName(i);
-                    row[columName] = reader.GetString(i); 
+                    row[columName] = reader.GetString(i).TrimEnd('\r', '\n'); 
                 }
                 dataArr.Add(row);
 

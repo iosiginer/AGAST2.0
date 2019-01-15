@@ -28,7 +28,7 @@ namespace GameUI.ViewModel
         public bool Correct { get => _correct; set => _correct = value; }
         public string KeyModifer {  get; set; }
 
-        internal int OnKeyDown(String key)
+        public int OnKeyDown(String key)
         {
             if(Input.Contains(key))
             {
@@ -71,12 +71,13 @@ namespace GameUI.ViewModel
             bool correctAnswer = CurrentFact.CheckIfCorrect(playerAndValue.Item2);
             if(correctAnswer)
             {
-                if (playerAndValue.Item1.Equals("player1")) ScoreOne++;
+                if (playerAndValue.Item1.Equals(TriviaConstants.PLAYER1)) ScoreOne++;
                 else ScoreTwo++;
+                CurrentFact = Factory.GetFact();
                 return 0;
                 
             } else {
-                if (playerAndValue.Item1.Equals("player1")) LivesOne--;
+                if (playerAndValue.Item1.Equals(TriviaConstants.PLAYER1)) LivesOne--;
                 else LivesTwo--;
                 if (LivesTwo == 0)
                 {
@@ -173,7 +174,7 @@ namespace GameUI.ViewModel
                 if (_factAsString != value)
                 {
                     _factAsString = value;
-                    RaisePropertyChanged("QuestionAsString");
+                    RaisePropertyChanged("FactAsString");
                 }
             }
         }

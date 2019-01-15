@@ -46,7 +46,7 @@ namespace AGAST2.GameUI
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            var dataContext = (ViewModelFacts)this.DataContext;
+            var dataContext = (ViewModelFacts)DataContext;
             dataContext.KeyModifer = e.SystemKey.ToString();
             int success = dataContext.OnKeyDown(e.Key.ToString());
             if (success == 1)
