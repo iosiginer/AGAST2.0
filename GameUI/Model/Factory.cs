@@ -82,18 +82,10 @@ namespace AGAST2.GameUI.Model
             var a = jerry[0];
             foreach (JToken entry in jerry)
             {
-                entryOne = entry["template_1"].ToString().TrimEnd()+ " is a ";
+                entryOne = entry["template_1"].ToString().TrimEnd() + " ";
                 entryTwo = " " + entry["template_2"].ToString().TrimEnd();
                 link_phrase = entry["link_phrase"].ToString().Trim();
             }
-
-            //************************************************************************
-            // DEAR IOSI, I DID ALITTLE BIT OF CODE. DIDNT CHECK THINGS THROUGLY!!!!!!
-            // ***********************************************************************
-            // IF IT DOESNT ALWAYS WORK ITS BECAUSE - either the query returns a null.
-            // or because the query doesnt return colums named "tempate_1" "tempalte_2" which i parse by later 
-            // but returns "name" instead.....
-            // these are both problems with the queries
 
             bool falsifyFact = randy.Next(100) <= 50 ? true : false;
             if (falsifyFact)
@@ -117,15 +109,16 @@ namespace AGAST2.GameUI.Model
             {
                 MatchEvaluator evaluator = new MatchEvaluator(PlaceHolderCounter);
                 link_phrase = Regex.Replace(link_phrase, TriviaConstants.PlaceHolder, evaluator);
-                link_phrase = Regex.Replace(link_phrase, "{[1-9]*}", string.Empty);
+                link_phrase = Regex.Replace(link_phrase, "{[0-9]*}", string.Empty);
 
-                fact = String.Format(link_phrase, entryOne) + entryTwo;
-                // Doesnt really work becasue i dont know regular expressions ¯\_(ツ)_/¯
+                if (link_phrase.Contains("member of"))
+                    link_phrase = "is a " + link_phrase;
+                if (link_phrase.Contains("children"))
+                    link_phrase = "is a child of";
+
             }
-            else
-            {
-                fact = entryOne + link_phrase + entryTwo;
-            }
+            fact = entryOne + link_phrase + entryTwo;
+
             return RemoveExcessiveWhitespace(fact);
         }
 
